@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+<script src="js/simpleCart.js"></script>
 
+<script src="https://js.stripe.com/v3/"></script>
 <head>
   <title>Kaira - Bootstrap 5 Fashion Store HTML CSS Template</title>
   <meta charset="utf-8">
@@ -1282,6 +1284,44 @@
     crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
   <script src="js/script.min.js"></script>
+<script>
+  // Konfiguracja koszyka
+  simpleCart({
+    checkout: { 
+      type: "SendForm", 
+      url: "javascript:void(0);" 
+    },
+    currency: "PLN"
+  });
+
+  // Połączenie ze Stripe
+  const stripe = Stripe('pk_live_51Sifc2DQd81oMskvAZIpEayJLyyRarjIR2ducdhVRHpXkcGLQPtMklOAbT93A57nv1yFfdHunlsaJizHTnCOg1V700oBwmNE4C'); 
+
+  function zaplac() {
+    let items = [];
+    
+    // Zbieranie produktów z koszyka
+    simpleCart.each(function(item) {
+      items.push({
+        price: item.get('stripe_id'), // To ID ceny ze Stripe
+        quantity: item.quantity()
+      });
+    });
+
+    if (items.length === 0) {
+      alert("Twój koszyk jest pusty!");
+      return;
+    }
+
+    // Przekierowanie do bramki płatniczej
+    stripe.redirectToCheckout({
+      lineItems: items,
+      mode: 'payment',
+      successUrl: window.location.origin + '/success.html',
+      cancelUrl: window.location.origin + '/index.html',
+    });
+  }
+</script>
 </body>
 
 </html>
