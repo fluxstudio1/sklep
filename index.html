@@ -1,63 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<style>
-  /* Cały panel koszyka */
-  #offcanvasCart {
-    font-family: 'Jost', sans-serif;
-    background-color: #fff;
-  }
 
-  /* Ukrywamy nagłówki tabeli (nie będzie napisów "Produkt", "Cena") */
-  .simpleCart_items thead {
-    display: none;
-  }
-
-  /* Wygląd listy produktów */
-  .simpleCart_items table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-
-  .simpleCart_items tr {
-    border-bottom: 1px solid #f1f1f1;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 0;
-  }
-
-  /* Nazwa produktu */
-  .item-name {
-    font-size: 16px;
-    font-weight: 500;
-    color: #222;
-    text-transform: uppercase;
-  }
-
-  /* Cena produktu */
-  .item-total {
-    font-weight: 700;
-    color: #000;
-  }
-
-  /* Ukrywamy wszystko inne (ilość, przyciski +/-), jeśli ich nie chcesz */
-  .item-decrement, .item-increment, .item-quantity, .item-price {
-    display: none;
-  }
-
-  /* Przycisk usuwania (mały iks na końcu) */
-  .simpleCart_remove {
-    color: #ccc;
-    text-decoration: none;
-    font-size: 18px;
-    margin-left: 15px;
-  }
-  
-  .simpleCart_remove:hover {
-    color: #000;
-  }
-</style>
+<script src="https://geowidget.easypack24.net/jsp/sdk.js"></script>
+<link rel="stylesheet" href="https://geowidget.easypack24.net/css/easypack.css">
     <title>Kaira - Bootstrap 5 Fashion Store HTML CSS Template</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -226,30 +172,45 @@
     </div>
   </div>
 
-<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasCart" aria-labelledby="offcanvasCartLabel">
-  <div class="offcanvas-header justify-content-between">
-    <h5 class="offcanvas-title" id="offcanvasCartLabel">Twój koszyk</h5>
-    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-  </div>
-  <div class="offcanvas-body">
-    
+<div class="offcanvas-body">
     <div class="simpleCart_items"></div>
 
+    <div class="checkout-details mt-4 border-top pt-3">
+        <h6 class="text-uppercase fw-bold mb-3">Dane do wysyłki</h6>
+        <input type="text" class="form-control mb-2" id="cust_name" placeholder="Imię i Nazwisko">
+        <input type="email" class="form-control mb-2" id="cust_email" placeholder="Email">
+        <input type="tel" class="form-control mb-2" id="cust_phone" placeholder="Numer telefonu">
+        
+        <select class="form-select mb-2" id="shipping_method" onchange="updateShipping()">
+            <option value="0">Wybierz dostawę...</option>
+            <option value="15">Kurier (15 zł)</option>
+            <option value="12">Paczkomat InPost (12 zł)</option>
+        </select>
+
+        <div id="paczkomat-widget" style="width: 100%; height: 300px; display: none;" class="mb-2"></div>
+        <input type="text" class="form-control mb-2" id="paczkomat_point" placeholder="Wybrany Paczkomat" readonly style="display: none;">
+    </div>
+
     <div class="mt-4 pt-3 border-top">
-      <div class="d-flex justify-content-between mb-2">
-        <span>Suma produktów:</span>
-        <span class="simpleCart_total">0.00 zł</span>
-      </div>
-      <div class="d-flex justify-content-between fw-bold fs-4">
-        <span>Razem:</span>
-        <span class="simpleCart_grandTotal">0.00 zł</span>
-      </div>
+        <div class="d-flex justify-content-between">
+            <span>Produkty:</span>
+            <span class="simpleCart_total">0.00 zł</span>
+        </div>
+        <div class="d-flex justify-content-between">
+            <span>Dostawa:</span>
+            <span id="shipping_cost">0.00 zł</span>
+        </div>
+        <hr>
+        <div class="d-flex justify-content-between fw-bold fs-4">
+            <span>RAZEM:</span>
+            <span id="final_total">0.00 zł</span>
+        </div>
     </div>
 
     <div class="mt-4 d-grid gap-2">
-      <a href="javascript:;" class="simpleCart_checkout btn btn-dark btn-lg py-3">ZAPŁAĆ PRZEZ STRIPE</a>
-      <a href="javascript:;" class="simpleCart_empty btn btn-outline-danger btn-sm">Wyczyść koszyk</a>
+        <button onclick="startStripePayment()" class="btn btn-dark btn-lg py-3">PRZEJDŹ DO PŁATNOŚCI</button>
     </div>
+</div>
     
   </div>
 </div>
@@ -1365,6 +1326,53 @@
       cancelUrl: window.location.origin + '/index.html',
     });
   }
+</script>
+<script>
+    // 1. Podstawowa konfiguracja
+    simpleCart({
+        currency: "PLN",
+        cartStyle: "table",
+        cartColumns: [
+            { attr: "name", label: false }, 
+            { view: "currency", attr: "total", label: false },
+            { view: "remove", text: "×", label: false }
+        ]
+    });
+
+    simpleCart.currency({ code: "PLN", symbol: " zł", after: true });
+
+    // 2. Funkcja licząca dostawę
+    function updateShipping() {
+        var price = document.getElementById('shipping_method').value;
+        var widget = document.getElementById('paczkomat-widget');
+        var inputPaczkomat = document.getElementById('paczkomat_point');
+        
+        document.getElementById('shipping_cost').innerText = price + ".00 zł";
+        
+        // Pokaż mapę jeśli wybrano Paczkomat
+        if(price == "12") {
+            widget.style.display = "block";
+            inputPaczkomat.style.display = "block";
+            openPaczkomatMap();
+        } else {
+            widget.style.display = "none";
+            inputPaczkomat.style.display = "none";
+        }
+        
+        // Aktualizuj sumę całkowitą
+        var total = simpleCart.total() + parseFloat(price);
+        document.getElementById('final_total').innerText = total.toFixed(2) + " zł";
+    }
+
+    // 3. Obsługa mapy InPost
+    function openPaczkomatMap() {
+        window.easyPackAsyncInit = function () {
+            easyPack.init({});
+            var map = easyPack.modalMap(function (point) {
+                document.getElementById('paczkomat_point').value = point.name + " - " + point.address.line1;
+            }, { width: 500, height: 600 });
+        };
+    }
 </script>
 </body>
 
