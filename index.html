@@ -1,6 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <style>
+  /* Wygląd listy produktów w koszyku */
+  .simpleCart_items table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+  .simpleCart_items th { text-align: left; padding: 10px; border-bottom: 2px solid #eee; font-family: 'Jost', sans-serif; text-transform: uppercase; font-size: 12px; }
+  .simpleCart_items td { padding: 10px; vertical-align: middle; border-bottom: 1px solid #eee; }
+  
+  /* Styl dla przycisków + / - / Usuń */
+  .item-decrement, .item-increment { background: #000; color: #fff; border: none; padding: 2px 8px; cursor: pointer; border-radius: 3px; }
+  .simpleCart_remove { color: #ff4d4d; text-decoration: none; font-size: 12px; font-weight: bold; }
+  
+  /* Ukrycie brzydkich nazw nagłówków, jeśli nie są potrzebne */
+  .headerRow .item-thumb { display: none; }
+</style>
     <title>Kaira - Bootstrap 5 Fashion Store HTML CSS Template</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
