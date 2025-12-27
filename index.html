@@ -306,18 +306,21 @@
         width: 100%;
         display: flex;
         justify-content: center;
-        padding: 40px 0;
-        background-color: transparent; /* Dopasuje się do koloru Twojej strony */
+        padding: 20px 0;
+        /* Usunięto stałe tło, aby nie odcinało tła strony */
+        background-color: transparent; 
     }
 
     .horizontal-form-box {
         background: #ffffff;
-        padding: 30px;
+        padding: 25px 30px;
         border-radius: 20px;
-        box-shadow: 0 8px 30px rgba(0,0,0,0.05);
+        /* Subtelny cień sprawia, że biały element "pływa" na Twoim tle */
+        box-shadow: 0 10px 40px rgba(0,0,0,0.06);
         width: 95%;
         max-width: 1000px;
         font-family: sans-serif;
+        box-sizing: border-box;
     }
 
     .form-row-layout {
@@ -339,22 +342,24 @@
     }
 
     .form-field label {
-        font-size: 12px;
+        font-size: 11px;
         font-weight: 700;
-        color: #555;
-        margin-bottom: 6px;
+        color: #888;
+        margin-bottom: 8px;
         text-transform: uppercase;
-        letter-spacing: 0.5px;
+        letter-spacing: 1px;
+        padding-left: 4px;
     }
 
     .form-field input, 
     .form-field textarea {
-        padding: 14px;
-        border: 1px solid #ddd;
-        border-radius: 12px;
+        padding: 14px 16px;
+        border: 1px solid #f0f0f0;
+        border-radius: 14px;
         font-size: 14px;
         outline: none;
-        transition: border 0.3s;
+        transition: all 0.3s ease;
+        background-color: #f9f9f9; /* Delikatne tło pól dla kontrastu z białą ramką */
     }
 
     .form-field textarea {
@@ -365,29 +370,40 @@
     .form-field input:focus, 
     .form-field textarea:focus {
         border-color: #000;
+        background-color: #fff;
+        box-shadow: 0 0 0 4px rgba(0,0,0,0.03);
     }
 
     .btn-submit-black {
         background: #000;
         color: #fff;
         border: none;
-        padding: 0 30px;
+        padding: 0 35px;
         height: 50px;
-        border-radius: 12px;
+        border-radius: 14px;
         font-weight: bold;
         cursor: pointer;
-        transition: 0.3s;
+        transition: all 0.3s ease;
     }
 
     .btn-submit-black:hover {
         background: #333;
         transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     }
 
     @media (max-width: 768px) {
-        .form-row-layout { flex-direction: column; align-items: stretch; }
+        .form-row-layout { 
+            flex-direction: column; 
+            align-items: stretch; 
+        }
+        .form-field.wide {
+            flex: 1;
+        }
     }
 </style>
+
+<!-- 2. SKOPIUJ TEN ELEMENT I WKLEJ W MIEJSCE, GDZIE MA BYĆ FORMULARZ -->
 <section class="custom-contact-container">
     <div class="horizontal-form-box">
         <form action="TUTAJ_WKLEJ_LINK_Z_GETFORM" method="POST">
@@ -620,6 +636,7 @@
 
 
 </html>
+
 
 
 
