@@ -306,18 +306,18 @@
         width: 100%;
         display: flex;
         justify-content: center;
-        padding: 40px 0;
-        /* Ustawiono kolor tła na beżowy pasujący do strony ze zdjęć */
-        background-color: #fdf6f0; 
+        padding: 50px 0;
+        /* Przyciemniony kolor tła (ciemniejszy beż), aby nie był "za jasny" */
+        background-color: #f7ede2; 
         margin: 0;
     }
 
     .horizontal-form-box {
         background: #ffffff;
-        padding: 25px 30px;
+        padding: 30px;
         border-radius: 20px;
-        /* Subtelny cień sprawia, że biały element "pływa" na beżowym tle */
-        box-shadow: 0 10px 40px rgba(0,0,0,0.06);
+        /* Nieco wyraźniejszy cień, aby biały panel lepiej odcinał się od tła */
+        box-shadow: 0 12px 45px rgba(0,0,0,0.08);
         width: 95%;
         max-width: 1000px;
         font-family: sans-serif;
@@ -345,7 +345,7 @@
     .form-field label {
         font-size: 11px;
         font-weight: 700;
-        color: #888;
+        color: #777;
         margin-bottom: 8px;
         text-transform: uppercase;
         letter-spacing: 1px;
@@ -355,12 +355,13 @@
     .form-field input, 
     .form-field textarea {
         padding: 14px 16px;
-        border: 1px solid #f0f0f0;
+        border: 1px solid #eee;
         border-radius: 14px;
         font-size: 14px;
         outline: none;
         transition: all 0.3s ease;
-        background-color: #f9f9f9;
+        /* Przyciemnione tło wewnątrz pól (lekki szary), żeby nie "biły po oczach" bielą */
+        background-color: #f2f2f2; 
     }
 
     .form-field textarea {
@@ -372,7 +373,7 @@
     .form-field textarea:focus {
         border-color: #000;
         background-color: #fff;
-        box-shadow: 0 0 0 4px rgba(0,0,0,0.03);
+        box-shadow: 0 0 0 4px rgba(0,0,0,0.04);
     }
 
     .btn-submit-black {
@@ -390,7 +391,7 @@
     .btn-submit-black:hover {
         background: #333;
         transform: translateY(-2px);
-        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.15);
     }
 
     @media (max-width: 768px) {
@@ -637,6 +638,7 @@
 
 
 </html>
+
 
 
 
