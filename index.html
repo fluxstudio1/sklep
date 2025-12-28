@@ -116,78 +116,307 @@
 		</div>
 	</section>
 
-	<section id="achievement" class="padding-large pt-0">
-		<div class="container-lg">
-			<div class="row">
-				<div class="section-header align-center mb-5">
-					<span class="text-primary">Awards and Recognition</span>
-					<h2 class="display-5 m-0">Achievement</h2>
-				</div>
-			</div>
-		</div>
+	<!-- SEKCJA GALERII PROJEKTÓW 3D - 3 KOLUMNY, PEŁNA CZERŃ Z ANIMACJĄ WEJŚCIA -->
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
 
-		<div class="container-lg">
-			<div class="row">
-				<div class="col-md-4">
-					<div class="card mb-4" data-aos="zoom-in-up" data-aos-delay="0">
-						<div class="card-body">
-							<span class="card-subtitle mb-2 text-primary">2021</span>
-							<h4 class="card-title text-capitalize">best Website design</h4>
-							<p class="card-text">Breakthrough designer of the year 2022</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-4">
-					<div class="card mb-4" data-aos="zoom-in-up" data-aos-delay="200">
-						<div class="card-body">
-							<span class="card-subtitle mb-2 text-primary">2022</span>
-							<h4 class="card-title text-capitalize">Web animation award</h4>
-							<p class="card-text">Breakthrough designer of the year 2022</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-4">
-					<div class="card mb-4" data-aos="zoom-in-up" data-aos-delay="400">
-						<div class="card-body">
-							<span class="card-subtitle mb-2 text-primary">2021</span>
-							<h4 class="card-title text-capitalize">Top branding agency</h4>
-							<p class="card-text">Breakthrough designer of the year 2022</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-4">
-					<div class="card mb-4" data-aos="zoom-in-up" data-aos-delay="600">
-						<div class="card-body">
-							<span class="card-subtitle mb-2 text-primary">2021</span>
-							<h4 class="card-title text-capitalize">best Website design</h4>
-							<p class="card-text">Breakthrough designer of the year 2022</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-4">
-					<div class="card mb-4" data-aos="zoom-in-up" data-aos-delay="800">
-						<div class="card-body">
-							<span class="card-subtitle mb-2 text-primary">2022</span>
-							<h4 class="card-title text-capitalize">UI/UX design award</h4>
-							<p class="card-text">Breakthrough designer of the year 2022</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-4">
-					<div class="card mb-4" data-aos="zoom-in-up" data-aos-delay="1000">
-						<div class="card-body">
-							<span class="card-subtitle mb-2 text-primary">2022</span>
-							<h4 class="card-title text-capitalize">best motion design</h4>
-							<p class="card-text">Breakthrough designer of the year 2022</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&display=swap" rel="stylesheet">
+    .gallery-section {
+        background-color: #ffffff;
+        padding: 100px 20px;
+        font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    .gallery-container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    /* Nagłówek - Pełna Czerń */
+    .gallery-header {
+        margin-bottom: 70px;
+        text-align: center;
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.8s ease-out;
+    }
+
+    /* Klasa aktywowana przez JS */
+    .gallery-header.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .gallery-title {
+        font-size: 34px;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+        margin-bottom: 15px;
+        color: #000000;
+        text-transform: none;
+    }
+
+    .gallery-subtitle {
+        font-size: 16px;
+        font-weight: 400;
+        opacity: 0.9;
+        max-width: 550px;
+        margin: 0 auto;
+        line-height: 1.6;
+        color: #000000;
+    }
+
+    /* Siatka galerii - 3 kolumny */
+    .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 35px;
+    }
+
+    /* Bazowy stan elementu przed animacją */
+    .gallery-item {
+        position: relative;
+        border-radius: 24px;
+        overflow: hidden;
+        aspect-ratio: 1 / 1;
+        background-color: #f8f8f8;
+        cursor: pointer;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+        transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.4s ease;
+        
+        /* Animacja wejścia */
+        opacity: 0;
+        transform: translateY(40px);
+        transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.4s ease, opacity 0.8s ease, transform-reveal 0.8s ease;
+    }
+
+    /* Klasa dodawana przez JS dla animacji scrolla */
+    .gallery-item.reveal {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .gallery-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    /* Overlay - "Pypek" */
+    .gallery-overlay {
+        position: absolute;
+        inset: 0;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 25px;
+        opacity: 0;
+        transition: opacity 0.4s ease;
+    }
+
+    .gallery-item:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    }
+
+    .gallery-item:hover .gallery-overlay {
+        opacity: 1;
+    }
+
+    .gallery-item:hover img {
+        transform: scale(1.1);
+    }
+
+    /* Biały boks informacyjny */
+    .project-info-box {
+        background: #ffffff;
+        padding: 20px;
+        border-radius: 18px;
+        transform: translateY(20px);
+        transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+        text-align: left;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+    }
+
+    .gallery-item:hover .project-info-box {
+        transform: translateY(0);
+    }
+
+    .project-name {
+        display: block;
+        color: #000000;
+        font-size: 17px;
+        font-weight: 700;
+        margin-bottom: 4px;
+    }
+
+    .project-client {
+        display: block;
+        color: #bc9c82;
+        font-size: 12px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.8px;
+    }
+
+    /* Responsywność */
+    @media (max-width: 1024px) {
+        .gallery-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width: 640px) {
+        .gallery-grid {
+            grid-template-columns: 1fr;
+        }
+        .gallery-title {
+            font-size: 26px;
+        }
+    }
+</style>
+
+<section class="gallery-section">
+    <div class="gallery-container">
+        
+        <div class="gallery-header" id="galleryHeader">
+            <h2 class="gallery-title">Portfolio Projektowe</h2>
+            <p class="gallery-subtitle">Kompletne zestawienie realizacji inżynieryjnych i projektowych stworzonych dla moich partnerów biznesowych.</p>
+        </div>
+
+        <div class="gallery-grid" id="galleryGrid">
+            
+            <!-- RZĄD 1 -->
+            <div class="gallery-item">
+                <img src="image/projekt1.jpg" alt="Projekt 3D">
+                <div class="gallery-overlay">
+                    <div class="project-info-box">
+                        <span class="project-name">Obudowa Przemysłowa</span>
+                        <span class="project-client">TechCorp Industry</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="image/projekt2.jpg" alt="Projekt 3D">
+                <div class="gallery-overlay">
+                    <div class="project-info-box">
+                        <span class="project-name">Części Mechaniczne</span>
+                        <span class="project-client">Automotive SA</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="image/projekt3.jpg" alt="Projekt 3D">
+                <div class="gallery-overlay">
+                    <div class="project-info-box">
+                        <span class="project-name">Model Architektoniczny</span>
+                        <span class="project-client">InwestProjekt</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RZĄD 2 -->
+            <div class="gallery-item">
+                <img src="image/projekt4.jpg" alt="Projekt 3D">
+                <div class="gallery-overlay">
+                    <div class="project-info-box">
+                        <span class="project-name">Prototyp Elektroniki</span>
+                        <span class="project-client">SmartHome Lab</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="image/projekt5.jpg" alt="Projekt 3D">
+                <div class="gallery-overlay">
+                    <div class="project-info-box">
+                        <span class="project-name">Detale Maszynowe</span>
+                        <span class="project-client">MetalWorks</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="image/projekt6.jpg" alt="Projekt 3D">
+                <div class="gallery-overlay">
+                    <div class="project-info-box">
+                        <span class="project-name">Design Koncepcyjny</span>
+                        <span class="project-client">FutureVision</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RZĄD 3 -->
+            <div class="gallery-item">
+                <img src="image/projekt7.jpg" alt="Projekt 3D">
+                <div class="gallery-overlay">
+                    <div class="project-info-box">
+                        <span class="project-name">Wydruk Precyzyjny</span>
+                        <span class="project-client">SwissTech</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="image/projekt8.jpg" alt="Projekt 3D">
+                <div class="gallery-overlay">
+                    <div class="project-info-box">
+                        <span class="project-name">Elementy Ażurowe</span>
+                        <span class="project-client">ArtStudio</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="image/projekt9.jpg" alt="Projekt 3D">
+                <div class="gallery-overlay">
+                    <div class="project-info-box">
+                        <span class="project-name">Inżynieria Materiałowa</span>
+                        <span class="project-client">NanoTech Solutions</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('reveal');
+                    // Jeśli to nagłówek
+                    if(entry.target.id === 'galleryHeader') {
+                        entry.target.classList.add('is-visible');
+                    }
+                }
+            });
+        }, observerOptions);
+
+        // Obserwuj nagłówek
+        const header = document.getElementById('galleryHeader');
+        observer.observe(header);
+
+        // Obserwuj każdy element galerii z opóźnieniem (kaskada)
+        const items = document.querySelectorAll('.gallery-item');
+        items.forEach((item, index) => {
+            // Dodajemy opóźnienie w CSS dla efektu kolejności
+            item.style.transitionDelay = `${(index % 3) * 0.15}s`;
+            observer.observe(item);
+        });
+    });
+</script>
 
 <style>
     .printo-reviews-wrapper {
@@ -1086,6 +1315,7 @@
 
 
 </html>
+
 
 
 
