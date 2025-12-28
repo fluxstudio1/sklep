@@ -1,1 +1,547 @@
+<!DOCTYPE html>
+<html>
 
+<head>
+	<title>Kontakt</title>
+
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="author" content="TemplatesJungle">
+	<meta name="keywords" content="Portfolio, Bootstrap5, HTML/CSS, Website Template">
+	<meta name="description" content="Aurora is a Portfolio Bootstrap5 HTML/CSS Website Template">
+
+	<link rel="stylesheet" type="text/css" href="assets/icomoon/icomoon.css">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="assets/vendor/chocolat/css/chocolat.css">
+	<link rel="stylesheet" type="text/css" href="css/vendor.css">
+
+	<link rel="stylesheet" type="text/css" href="style.css">
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link
+		href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Quicksand:wght@300..700&display=swap"
+		rel="stylesheet">
+
+</head>
+
+<body>
+
+	<div id="overlayer">
+		<span class="loader">
+			<span class="loader-inner"></span>
+		</span>
+	</div>
+
+	<div class="nav nav-overlay">
+		<div class="nav__content">
+			<ul class="nav__list">
+				<li class="nav__list-item mb-2 active-nav"><a href="https://fluxstudio1.github.io/sklep/">Strona Główna</a></li>
+				<li class="nav__list-item mb-2 active-nav"><a href="https://fluxstudio1.github.io/sklep/Kontakt.html">Kontakt</a></li>
+				<li class="nav__list-item mb-2 active-nav"><a href="#">Regulamin</a></li>
+				<li class="nav__list-item mb-2 active-nav"><a href="#">Polityka Prywatności</a></li>
+			</ul>
+		</div>
+	</div>
+
+	<header id="header">
+		<div class="header-wrap" data-aos="fade">
+			<div class="main-logo">
+				<a href="index.html"><img src="images/logo.png" title="Portfo HTML Template"></a>
+			</div><!--main-logo-->
+
+			<nav id="navbar">
+				<input id="menu-toggle" type="checkbox" />
+				<label class="menu-btn" for="menu-toggle">
+					<span></span>
+				</label>
+			</nav>
+
+		</div><!--header-wrap-->
+	</header>
+
+
+<!-- 
+    INSTRUKCJA ZMIANY ZDJĘĆ I TEKSTÓW:
+    1. Znajdź sekcję <div class="filter-grid">.
+    2. Każdy element galerii zaczyna się od <div class="filter-item">.
+    3. Aby zmienić zdjęcie: Wyszukaj 'src="image/..."' i podmień ścieżkę na własną.
+    4. Aby zmienić kategorię: Zmień wartość w 'data-category="..."' (musi być mała litera, bez spacji).
+    5. Aby zmienić opis: Zmień tekst w <span class="info-name"> (nazwa projektu) oraz <span class="info-cat"> (podpis).
+-->
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+
+    .gallery-filter-section {
+        background-color: #ffffff;
+        padding: 80px 20px;
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        color: #000000;
+    }
+
+    .filter-container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    /* --- STYLIZACJA NAGŁÓWKA --- */
+    .filter-header {
+        text-align: center;
+        margin-bottom: 50px;
+    }
+
+    .filter-header h1 {
+        font-size: 42px;
+        font-weight: 700;
+        letter-spacing: -1px;
+        margin-bottom: 20px;
+        color: #000000;
+    }
+
+    /* --- PRZYCISKI FILTROWANIA --- */
+    .filter-nav {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-bottom: 60px;
+    }
+
+    .filter-btn {
+        background: none;
+        border: 1px solid #e0e0e0;
+        padding: 10px 22px;
+        border-radius: 30px;
+        font-size: 13px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+        color: #666;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .filter-btn:hover {
+        border-color: #000000;
+        color: #000000;
+    }
+
+    .filter-btn.active {
+        background-color: #000000;
+        color: #ffffff;
+        border-color: #000000;
+    }
+
+    /* --- SIATKA PROJEKTÓW --- */
+    .filter-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 25px;
+        min-height: 400px;
+    }
+
+    /* --- POJEDYNCZY PANEL --- */
+    .filter-item {
+        position: relative;
+        border-radius: 24px;
+        overflow: hidden;
+        aspect-ratio: 1 / 1;
+        background-color: #f1f1f1;
+        cursor: pointer;
+        transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.4s ease;
+    }
+
+    /* Ukrywanie/Pokazywanie (Animacja) */
+    .filter-item.hidden {
+        display: none;
+        opacity: 0;
+        transform: scale(0.8);
+    }
+
+    .filter-item.show {
+        animation: fadeInScale 0.6s forwards cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    @keyframes fadeInScale {
+        from { opacity: 0; transform: scale(0.9) translateY(30px); }
+        to { opacity: 1; transform: scale(1) translateY(0); }
+    }
+
+    .filter-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    /* --- NAKŁADKA ("PYPEK") --- */
+    .filter-overlay {
+        position: absolute;
+        inset: 0;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 20px;
+        opacity: 0;
+        transition: opacity 0.4s ease;
+    }
+
+    .filter-item:hover .filter-overlay {
+        opacity: 1;
+    }
+
+    .filter-item:hover img {
+        transform: scale(1.1);
+    }
+
+    /* Biały boks z info */
+    .info-box {
+        background: #ffffff;
+        padding: 18px;
+        border-radius: 18px;
+        transform: translateY(15px);
+        transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    }
+
+    .filter-item:hover .info-box {
+        transform: translateY(0);
+    }
+
+    .info-name {
+        display: block;
+        color: #000000;
+        font-size: 16px;
+        font-weight: 700;
+        margin-bottom: 2px;
+    }
+
+    .info-cat {
+        display: block;
+        color: #bc9c82;
+        font-size: 11px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    /* --- RESPONSYWNOŚĆ --- */
+    @media (max-width: 1024px) {
+        .filter-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 640px) {
+        .filter-grid { grid-template-columns: 1fr; }
+    }
+</style>
+
+<section class="gallery-filter-section">
+    <div class="filter-container">
+        
+        <!-- NAGŁÓWEK SEKCI -->
+        <div class="filter-header">
+            <h1>Nasza Galeria</h1>
+            
+            <!-- MENU FILTRÓW: Jeśli dodasz nową kategorię, dopisz tutaj przycisk z odpowiednim data-filter -->
+            <div class="filter-nav">
+                <button class="filter-btn active" data-filter="all">Wszystkie</button>
+                <button class="filter-btn" data-filter="breloki">Breloki</button>
+                <button class="filter-btn" data-filter="magnesy">Magnesy</button>
+                <button class="filter-btn" data-filter="statuetki">Statuetki</button>
+                <button class="filter-btn" data-filter="inne">Inne Projekty</button>
+            </div>
+        </div>
+
+        <div class="filter-grid" id="galleryGrid">
+            
+            <!-- ============================== -->
+            <!-- GRUPA: BRELOKI (5 sztuk) -->
+            <!-- ============================== -->
+            
+            <div class="filter-item show" data-category="breloki">
+                <img src="image/brelok1.jpg" alt="Brelok 1">
+                <div class="filter-overlay">
+                    <div class="info-box">
+                        <span class="info-name">Brelok Diamond</span>
+                        <span class="info-cat">Breloki</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="filter-item show" data-category="breloki">
+                <img src="image/brelok2.jpg" alt="Brelok 2">
+                <div class="filter-overlay">
+                    <div class="info-box">
+                        <span class="info-name">Brelok Classic Logo</span>
+                        <span class="info-cat">Breloki</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="filter-item show" data-category="breloki">
+                <img src="image/brelok3.jpg" alt="Brelok 3">
+                <div class="filter-overlay">
+                    <div class="info-box">
+                        <span class="info-name">Brelok Serce 3D</span>
+                        <span class="info-cat">Breloki</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="filter-item show" data-category="breloki">
+                <img src="image/brelok4.jpg" alt="Brelok 4">
+                <div class="filter-overlay">
+                    <div class="info-box">
+                        <span class="info-name">Brelok Industrial</span>
+                        <span class="info-cat">Breloki</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="filter-item show" data-category="breloki">
+                <img src="image/brelok5.jpg" alt="Brelok 5">
+                <div class="filter-overlay">
+                    <div class="info-box">
+                        <span class="info-name">Brelok Minimal</span>
+                        <span class="info-cat">Breloki</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ============================== -->
+            <!-- GRUPA: MAGNESY (4 sztuki) -->
+            <!-- ============================== -->
+
+            <div class="filter-item show" data-category="magnesy">
+                <img src="image/magnes1.jpg" alt="Magnes 1">
+                <div class="filter-overlay">
+                    <div class="info-box">
+                        <span class="info-name">Magnes Miasto</span>
+                        <span class="info-cat">Magnesy</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="filter-item show" data-category="magnesy">
+                <img src="image/magnes2.jpg" alt="Magnes 2">
+                <div class="filter-overlay">
+                    <div class="info-box">
+                        <span class="info-name">Magnes Pamiątkowy</span>
+                        <span class="info-cat">Magnesy</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="filter-item show" data-category="magnesy">
+                <img src="image/magnes3.jpg" alt="Magnes 3">
+                <div class="filter-overlay">
+                    <div class="info-box">
+                        <span class="info-name">Magnes Zwierzęta</span>
+                        <span class="info-cat">Magnesy</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="filter-item show" data-category="magnesy">
+                <img src="image/magnes4.jpg" alt="Magnes 4">
+                <div class="filter-overlay">
+                    <div class="info-box">
+                        <span class="info-name">Magnes Abstrakt</span>
+                        <span class="info-cat">Magnesy</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ============================== -->
+            <!-- GRUPA: STATUETKI (3 sztuki) -->
+            <!-- ============================== -->
+
+            <div class="filter-item show" data-category="statuetki">
+                <img src="image/statua1.jpg" alt="Statuetka 1">
+                <div class="filter-overlay">
+                    <div class="info-box">
+                        <span class="info-name">Puchar Sportowy</span>
+                        <span class="info-cat">Statuetki</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="filter-item show" data-category="statuetki">
+                <img src="image/statua2.jpg" alt="Statuetka 2">
+                <div class="filter-overlay">
+                    <div class="info-box">
+                        <span class="info-name">Nagroda Eko</span>
+                        <span class="info-cat">Statuetki</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="filter-item show" data-category="statuetki">
+                <img src="image/statua3.jpg" alt="Statuetka 3">
+                <div class="filter-overlay">
+                    <div class="info-box">
+                        <span class="info-name">Oscar Firmowy</span>
+                        <span class="info-cat">Statuetki</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ============================== -->
+            <!-- GRUPA: INNE (3 sztuki) -->
+            <!-- ============================== -->
+
+            <div class="filter-item show" data-category="inne">
+                <img src="image/inne1.jpg" alt="Inne 1">
+                <div class="filter-overlay">
+                    <div class="info-box">
+                        <span class="info-name">Projekt Specjalny X</span>
+                        <span class="info-cat">Inne Projekty</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="filter-item show" data-category="inne">
+                <img src="image/inne2.jpg" alt="Inne 2">
+                <div class="filter-overlay">
+                    <div class="info-box">
+                        <span class="info-name">Gadżet Eventowy</span>
+                        <span class="info-cat">Inne Projekty</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="filter-item show" data-category="inne">
+                <img src="image/inne3.jpg" alt="Inne 3">
+                <div class="filter-overlay">
+                    <div class="info-box">
+                        <span class="info-name">Makieta 3D</span>
+                        <span class="info-cat">Inne Projekty</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const buttons = document.querySelectorAll('.filter-btn');
+        const items = document.querySelectorAll('.filter-item');
+
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Aktywacja przycisku
+                buttons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+
+                const filter = button.getAttribute('data-filter');
+
+                // Filtrowanie z animacją
+                items.forEach(item => {
+                    const category = item.getAttribute('data-category');
+
+                    if (filter === 'all' || filter === category) {
+                        item.classList.remove('hidden');
+                        setTimeout(() => {
+                            item.classList.add('show');
+                        }, 50);
+                    } else {
+                        item.classList.remove('show');
+                        item.classList.add('hidden');
+                    }
+                });
+            });
+        });
+    });
+</script>
+
+
+</section>
+	<footer id="footer" class="padding-large bg-primary">
+		<div class="container-lg text-white">
+			<div class="row">
+				<div class="footer-menu col-md-4">
+					<div class="footer-intro">
+						<a href="#" class="logo"><img src="images/logo-light.png"></a>
+					</div>
+					<div class="footer-address mt-4">
+						<p>Just feel free to contact if you wanna collaborate with me, or simply have a conversation.
+						</p>
+						<div class="mail-address">
+							<a href="#" class="text-white fs-3 text-decoration-underline">contact@yourcompany.com</a>
+						</div>
+					</div>
+				</div>
+
+				<div class="footer-menu col-6 col-md-2">
+					<ul class="list-unstyled">
+						<li><a href="#" class="text-white">Home</a></li>
+						<li><a href="#" class="text-white">About</a></li>
+						<li><a href="#" class="text-white">Portfolio</a></li>
+						<li><a href="#" class="text-white">Services</a></li>
+						<li><a href="#" class="text-white">Contact</a></li>
+					</ul>
+				</div>
+
+				<div class="footer-menu col-6 col-md-2">
+					<ul class="list-unstyled">
+						<li><a href="#" class="text-white">Privacy Policy</a></li>
+						<li><a href="#" class="text-white">Our Team</a></li>
+						<li><a href="#" class="text-white">Pricing</a></li>
+						<li><a href="#" class="text-white">Terms and Conditions</a></li>
+					</ul>
+				</div>
+
+				<div class="footer-menu col-md-4">
+					<div class="subscribe">
+						<p>Subscribe to newsletter to get some updates related with branding, designs and more.</p>
+						<input class="rounded-2" type="text" name="email" placeholder="Write Your Email Address">
+						<button class="btn btn-dark">Subscribe</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+	<div id="footer-bottom" class="py-3 bg-primary border-top">
+		<div class="container-lg text-white">
+			<div class="row align-items-center">
+				<div class="col-md-6">
+					<div class="social-links">
+						<ul class="justify-content-center justify-content-md-start m-0">
+							<li><a href="#"><i class="icon fs-5 icon-facebook"></i></a></li>
+							<li><a href="#"><i class="icon fs-5 icon-twitter"></i></a></li>
+							<li><a href="#"><i class="icon fs-5 icon-behance-square"></i></a></li>
+							<li><a href="#"><i class="icon fs-5 icon-youtube-play"></i></a></li>
+							<li><a href="#"><i class="icon fs-5 icon-pinterest-p"></i></a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-md-6 text-center text-md-end">
+					<div class="copyright">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="js/jquery-1.11.0.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+		crossorigin="anonymous"></script>
+	<script src="assets/vendor/chocolat/js/chocolat.js"></script>
+	<script src="js/plugins.js"></script>
+	<script src="js/script.js"></script>
+<script src="https://kwesforms.com/v2/kf-script.js" defer></script>
+</body>
+
+
+</html>
