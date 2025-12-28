@@ -827,194 +827,242 @@
         observer.observe(targetSection);
     }
 </script>
+<!-- MINIMALISTYCZNA AŻUROWA STOPKA - BIEL I LINIE -->
 <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500&display=swap');
+
     .custom-footer {
-        background-color: #c4a484; /* Ciemniejszy odcień kawy z mlekiem */
-        color: #2d1b18; /* Bardzo ciemny brąz dla kontrastu */
-        padding: 40px 20px 25px 20px;
-        font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+        background-color: #bc9c82; /* Szlachetna kawa z mlekiem */
+        color: #ffffff; /* Wszystkie napisy na biało */
+        padding: 80px 20px 40px 20px;
+        font-family: 'Inter', sans-serif;
     }
 
-    .footer-container {
-        max-width: 1200px;
+    .footer-wrapper {
+        max-width: 1100px;
         margin: 0 auto;
-        display: grid;
-        grid-template-columns: 1.5fr 1fr 1fr 1fr;
-        gap: 40px;
     }
 
-    /* Sekcja Logo */
-    .footer-brand {
+    .footer-main {
         display: flex;
-        flex-direction: column;
-        gap: 10px;
+        justify-content: space-between;
+        align-items: flex-start;
+        padding-bottom: 60px;
+    }
+
+    /* Branding - Ażurowe Logo */
+    .footer-identity {
+        flex: 1;
     }
 
     .footer-logo {
-        font-size: 26px;
-        font-weight: 800;
-        letter-spacing: -1px;
+        font-size: 28px;
+        font-weight: 500;
+        letter-spacing: 4px;
         text-transform: uppercase;
-        color: #2d1b18;
+        margin-bottom: 20px;
+        color: #ffffff;
     }
 
     .footer-logo span {
-        color: #ffffff; /* Biały akcent dla marki */
+        font-weight: 200;
+        opacity: 0.7;
     }
 
-    /* Styl ikon na dole */
-    .social-btn {
-        color: #ffffff;
-        text-decoration: none;
-        transition: transform 0.2s ease, opacity 0.2s ease;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        filter: drop-shadow(0px 1px 1px rgba(0,0,0,0.1));
-    }
-
-    .social-btn:hover {
-        transform: scale(1.2);
+    .footer-tagline {
+        font-size: 14px;
+        font-weight: 300;
+        line-height: 1.8;
+        max-width: 280px;
         opacity: 0.8;
+        color: #ffffff;
     }
 
-    .social-btn svg {
-        width: 20px;
-        height: 20px;
-        fill: none;
-        stroke: currentColor;
-        stroke-width: 2;
-        stroke-linecap: round;
-        stroke-linejoin: round;
+    /* Menu i Kontakt */
+    .footer-links-group {
+        display: flex;
+        gap: 100px;
     }
 
-    /* Kolumny Menu */
-    .footer-column h4 {
+    .footer-nav h4, .footer-contact h4 {
         font-size: 11px;
         text-transform: uppercase;
-        letter-spacing: 1.2px;
-        margin-bottom: 15px;
-        color: #2d1b18;
-        font-weight: 700;
-        opacity: 0.8;
+        letter-spacing: 2px;
+        margin-bottom: 25px;
+        font-weight: 500;
+        opacity: 0.6;
+        color: #ffffff;
     }
 
-    .footer-column ul {
+    .footer-nav ul {
         list-style: none;
         padding: 0;
         margin: 0;
     }
 
-    .footer-column ul li {
-        margin-bottom: 8px;
+    .footer-nav ul li {
+        margin-bottom: 12px;
     }
 
-    .footer-column ul li a {
-        color: #2d1b18;
+    .footer-nav ul li a {
+        color: #ffffff;
         text-decoration: none;
         font-size: 14px;
-        transition: opacity 0.2s ease;
-        opacity: 0.85;
+        font-weight: 300;
+        transition: opacity 0.3s ease;
     }
 
-    .footer-column ul li a:hover {
-        opacity: 0.6;
+    .footer-nav ul li a:hover {
+        opacity: 0.5;
     }
 
-    /* Dolny pasek */
+    /* Kontakt - Czyste linie */
+    .contact-details p {
+        margin: 0 0 15px 0;
+        font-size: 15px;
+        font-weight: 300;
+    }
+
+    .contact-details a {
+        color: #ffffff;
+        text-decoration: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+        padding-bottom: 2px;
+        transition: border-color 0.3s ease;
+    }
+
+    .contact-details a:hover {
+        border-bottom-color: #ffffff;
+    }
+
+    /* Dolna sekcja - Sociale i Copyright */
     .footer-bottom {
-        max-width: 1200px;
-        margin: 30px auto 0 auto;
-        padding-top: 20px;
-        border-top: 1px solid rgba(45, 27, 24, 0.1);
         display: flex;
         justify-content: space-between;
         align-items: center;
-        font-size: 12px;
-        color: #2d1b18;
-        opacity: 0.8;
+        padding-top: 40px;
+        border-top: 1px solid rgba(255, 255, 255, 0.15);
     }
 
-    .footer-bottom-socials {
+    .copyright {
+        font-size: 11px;
+        opacity: 0.5;
+        letter-spacing: 1px;
+        font-weight: 300;
+    }
+
+    /* Ażurowe Logo Social Media (Same Outline) */
+    .footer-socials {
         display: flex;
-        gap: 18px;
+        gap: 20px;
+    }
+
+    .social-link {
+        color: #ffffff;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .social-link:hover {
+        transform: translateY(-3px);
+        opacity: 0.6;
+    }
+
+    .social-link svg {
+        width: 22px;
+        height: 22px;
+        fill: none; /* Ażurowość - brak wypełnienia */
+        stroke: currentColor;
+        stroke-width: 1.2; /* Cienkie linie */
+        stroke-linecap: round;
+        stroke-linejoin: round;
     }
 
     /* Responsywność */
-    @media (max-width: 992px) {
-        .footer-container {
-            grid-template-columns: 1fr 1fr;
-        }
-    }
-
     @media (max-width: 768px) {
-        .footer-container {
-            grid-template-columns: 1fr;
+        .footer-main {
+            flex-direction: column;
+            gap: 50px;
             text-align: center;
         }
-        .footer-brand {
-            margin-bottom: 20px;
+        .footer-identity {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+        }
+        .footer-links-group {
+            flex-direction: column;
+            gap: 40px;
+            width: 100%;
         }
         .footer-bottom {
-            flex-direction: column;
-            gap: 15px;
+            flex-direction: column-reverse;
+            gap: 30px;
         }
     }
 </style>
 
 <footer class="custom-footer">
-    <div class="footer-container">
-        <!-- Brand -->
-        <div class="footer-brand">
-            <div class="footer-logo">
-                PRINTO<span>VA</span>
+    <div class="footer-wrapper">
+        <div class="footer-main">
+            <!-- Branding -->
+            <div class="footer-identity">
+                <div class="footer-logo">PRINTO<span>VA</span></div>
+                <p class="footer-tagline">Projekty, które łączą wizję z materią. Najwyższa precyzja druku 3D.</p>
             </div>
-            <!-- Ikony pod logo zostały usunięte -->
+
+            <div class="footer-links-group">
+                <!-- Menu -->
+                <nav class="footer-nav">
+                    <h4>Nawigacja</h4>
+                    <ul>
+                        <li><a href="#">O studio</a></li>
+                        <li><a href="#">Realizacje</a></li>
+                        <li><a href="#">Współpraca</a></li>
+                    </ul>
+                </nav>
+
+                <!-- Kontakt -->
+                <div class="footer-contact">
+                    <h4>Kontakt</h4>
+                    <div class="contact-details">
+                        <p><a href="tel:+48123456789">+48 123 456 789</a></p>
+                        <p><a href="mailto:hello@printova.pl">hello@printova.pl</a></p>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <!-- Kolumny -->
-        <div class="footer-column">
-            <h4>Usługi</h4>
-            <ul>
-                <li><a href="#">Druk 3D na wymiar</a></li>
-                <li><a href="#">Modele Techniczne</a></li>
-                <li><a href="#">Prototypowanie</a></li>
-            </ul>
-        </div>
-
-        <div class="footer-column">
-            <h4>Firma</h4>
-            <ul>
-                <li><a href="#">O nas</a></li>
-                <li><a href="#">Realizacje</a></li>
-                <li><a href="#">Kontakt</a></li>
-            </ul>
-        </div>
-
-        <div class="footer-column">
-            <h4>Wsparcie</h4>
-            <ul>
-                <li><a href="#">FAQ</a></li>
-                <li><a href="#">Prywatność</a></li>
-                <li><a href="#">Regulamin</a></li>
-            </ul>
-        </div>
-    </div>
-
-    <div class="footer-bottom">
-        <div>© 2025 Printova. Wszystkie prawa zastrzeżone.</div>
-        
-        <!-- Ikony wyłącznie tutaj -->
-        <div class="footer-bottom-socials">
-            <a href="#" class="social-btn" aria-label="Facebook">
-                <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
-            </a>
-            <a href="#" class="social-btn" aria-label="Instagram">
-                <svg viewBox="0 0 24 24"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line></svg>
-            </a>
-            <a href="#" class="social-btn" aria-label="YouTube">
-                <svg viewBox="0 0 24 24"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 2-2 58.38 58.38 0 0 1 15 0 2 2 0 0 1 2 2 24.12 24.12 0 0 1 0 10 2 2 0 0 1-2 2 58.38 58.38 0 0 1-15 0 2 2 0 0 1-2-2z"></path><polyline points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"></polyline></svg>
-            </a>
+        <div class="footer-bottom">
+            <div class="copyright">
+                © 2025 PRINTOVA STUDIO. WSZYSTKIE PRAWA ZASTRZEŻONE.
+            </div>
+            
+            <div class="footer-socials">
+                <!-- Instagram Outline -->
+                <a href="https://instagram.com/twój_link" class="social-link" target="_blank" aria-label="Instagram">
+                    <svg viewBox="0 0 24 24">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                    </svg>
+                </a>
+                <!-- Facebook Outline -->
+                <a href="https://facebook.com/twój_link" class="social-link" target="_blank" aria-label="Facebook">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                    </svg>
+                </a>
+                <!-- YouTube Outline -->
+                <a href="https://youtube.com/twój_link" class="social-link" target="_blank" aria-label="YouTube">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
+                        <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"></polygon>
+                    </svg>
+                </a>
+            </div>
         </div>
     </div>
 </footer>
@@ -1038,6 +1086,7 @@
 
 
 </html>
+
 
 
 
