@@ -115,7 +115,218 @@
         observer.observe(targetSection);
     }
 </script>
+<style>
+    /* Zmienne lokalne dla sekcji */
+    .printo-contact-root {
+        --p-black: #1a1a1a;
+        --p-white: #ffffff;
+        --p-gray: #f8f8f8;
+        --p-border: rgba(26, 26, 26, 0.08);
+        --p-text-muted: #666666;
+        --p-anim-ease: cubic-bezier(0.16, 1, 0.3, 1);
+        
+        width: 100%;
+        padding: 120px 24px;
+        background-color: transparent;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        box-sizing: border-box;
+    }
 
+    /* Animacje wejścia */
+    @keyframes p-fadeInUp {
+        from { opacity: 0; transform: translateY(40px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes p-revealCard {
+        from { opacity: 0; transform: scale(0.98); }
+        to { opacity: 1; transform: scale(1); }
+    }
+
+    .p-animate {
+        opacity: 0;
+        animation: p-fadeInUp 0.8s var(--p-anim-ease) forwards;
+    }
+
+    .p-delay-1 { animation-delay: 0.1s; }
+    .p-delay-2 { animation-delay: 0.2s; }
+    .p-delay-3 { animation-delay: 0.3s; }
+
+    /* Nagłówek */
+    .p-contact-header {
+        max-width: 800px;
+        text-align: center;
+        margin-bottom: 70px;
+    }
+
+    .p-contact-header h2 {
+        font-size: clamp(36px, 6vw, 60px);
+        font-weight: 800;
+        letter-spacing: -0.04em;
+        margin: 0 0 24px 0;
+        color: var(--p-black);
+        line-height: 1.1;
+    }
+
+    .p-contact-header p {
+        font-size: 18px;
+        color: var(--p-text-muted);
+        line-height: 1.7;
+        max-width: 580px;
+        margin: 0 auto;
+    }
+
+    /* Karta formularza - poprawiony układ */
+    .p-form-card {
+        width: 100%;
+        max-width: 1150px;
+        background: var(--p-white);
+        border: 1px solid var(--p-border);
+        border-radius: 48px;
+        padding: 80px;
+        box-sizing: border-box;
+        box-shadow: 0 40px 100px rgba(0,0,0,0.02);
+        animation: p-revealCard 1s var(--p-anim-ease) forwards;
+        animation-delay: 0.15s;
+        opacity: 0;
+    }
+
+    /* Naprawiony Grid - wyraźny podział i odstępy */
+    .p-form-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 40px; /* Odstęp między imieniem a mailem */
+        row-gap: 32px;   /* Odstęp między rzędami */
+    }
+
+    .p-full-width { 
+        grid-column: span 2; 
+    }
+
+    .p-input-group {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .p-input-group label {
+        font-size: 11px;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        color: var(--p-black);
+        opacity: 0.4;
+        padding-left: 4px;
+    }
+
+    .p-control {
+        width: 100%;
+        background: var(--p-gray);
+        border: 1px solid transparent;
+        border-radius: 24px;
+        padding: 22px 28px;
+        font-family: inherit;
+        font-size: 16px;
+        font-weight: 500;
+        color: var(--p-black);
+        outline: none;
+        transition: all 0.3s var(--p-anim-ease);
+        box-sizing: border-box;
+    }
+
+    .p-control:focus {
+        background: var(--p-white);
+        border-color: var(--p-black);
+        transform: translateY(-2px);
+        box-shadow: 0 15px 35px rgba(0,0,0,0.03);
+    }
+
+    textarea.p-control {
+        min-height: 240px;
+        resize: none;
+        line-height: 1.6;
+    }
+
+    /* Przycisk */
+    .p-footer {
+        grid-column: span 2;
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 10px;
+    }
+
+    .p-btn-submit {
+        background: var(--p-black);
+        color: var(--p-white);
+        border: none;
+        padding: 24px 70px;
+        border-radius: 24px;
+        font-size: 16px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.4s var(--p-anim-ease);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+
+    .p-btn-submit:hover {
+        background: #000;
+        transform: translateY(-5px);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    }
+
+    /* Mobile */
+    @media (max-width: 900px) {
+        .p-form-grid { 
+            grid-template-columns: 1fr; 
+            row-gap: 24px;
+        }
+        .p-full-width, .p-footer { grid-column: span 1; }
+        .p-form-card { padding: 40px 24px; border-radius: 32px; }
+        .p-footer { justify-content: center; margin-top: 0; }
+        .p-btn-submit { width: 100%; }
+        .p-contact-header { margin-bottom: 40px; }
+    }
+</style>
+
+<section class="printo-contact-root">
+    
+    <div class="p-contact-header">
+        <h2 class="p-animate p-delay-1">Rozpocznijmy projekt</h2>
+        <p class="p-animate p-delay-2">Opisz swoją wizję, a my dobierzemy najlepszą technologię druku 3D, aby ją zmaterializować.</p>
+    </div>
+
+    <div class="p-form-card">
+        <form action="#" method="POST" class="p-form-grid">
+            
+            <div class="p-input-group p-animate p-delay-3">
+                <label for="p-name">Imię i nazwisko</label>
+                <input type="text" id="p-name" name="name" class="p-control" placeholder="Jan Kowalski" required>
+            </div>
+
+            <div class="p-input-group p-animate p-delay-3">
+                <label for="p-email">Adres E-mail</label>
+                <input type="email" id="p-email" name="email" class="p-control" placeholder="kontakt@domena.pl" required>
+            </div>
+
+            <div class="p-input-group p-full-width p-animate p-delay-3">
+                <label for="p-msg">Szczegóły wiadomości</label>
+                <textarea id="p-msg" name="message" class="p-control" placeholder="Opisz wymiary, materiał lub przeznaczenie modelu..." required></textarea>
+            </div>
+
+            <div class="p-footer p-animate p-delay-3">
+                <button type="submit" class="p-btn-submit">
+                    Wyślij zapytanie
+                </button>
+            </div>
+
+        </form>
+    </div>
+
+</section>
 	<footer id="footer" class="padding-large bg-primary">
 		<div class="container-lg text-white">
 			<div class="row">
