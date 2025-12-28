@@ -531,30 +531,175 @@
 		</div>
 	</section>
 
-	<section id="features" class="padding-large pt-0">
-		<div class="container-lg" data-aos="zoom-in-up" data-aos-delay="300">
-			<div class="row justify-content-center">
-				<div class="col-md-4">
-					<div class="milestone text-center">
-						<h3 class="display-1 m-0">2</h3>
-						<p class="text-uppercase">lata doświadczenia</p>
-					</div>
-				</div>
-			    <div class="col-md-4">
-					<div class="milestone text-center">
-						<h3 class="display-1 m-0">100+</h3>
-						<p class="text-uppercase">zadowolonych klijentów</p>
-					</div>
-				</div>
-				<div class="col-md-4">
-					<div class="milestone text-center">
-						<h3 class="display-1 m-0">300+</h3>
-						<p class="text-uppercase">stworzonych projektów 3D</p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Plus+Jakarta+Sans:wght@700&display=swap" rel="stylesheet">
+
+<style>
+    .printo-counters-wrapper {
+        width: 100%;
+        padding: 80px 0;
+        background: transparent;
+        font-family: 'Bebas Neue', sans-serif;
+        display: flex;
+        justify-content: center;
+        overflow: hidden;
+    }
+
+    .printo-counters-grid {
+        display: flex;
+        justify-content: center;
+        gap: 120px;
+        width: 95%;
+        max-width: 1200px;
+        flex-wrap: wrap;
+    }
+
+    .printo-counter-item {
+        text-align: center;
+        flex: 1;
+        min-width: 250px;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 1s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .printo-counter-item.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .printo-number-box {
+        font-size: 110px;
+        font-weight: 400;
+        color: #1a1a1a;
+        margin-bottom: 0px;
+        display: flex;
+        justify-content: center;
+        align-items: center; /* Centrowanie pionowe zawartości (liczba i plus) */
+        line-height: 1;
+        letter-spacing: 1px;
+    }
+
+    .printo-plus {
+        color: #1a1a1a; /* W pełni czarny */
+        margin-left: 8px;
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        font-size: 55px;
+        font-weight: 700;
+        display: inline-block;
+        line-height: 1;
+        /* Korekta optyczna, aby plus był idealnie w środku wysokości Bebas Neue */
+        transform: translateY(-4px); 
+    }
+
+    .printo-label {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        font-size: 14px;
+        font-weight: 700;
+        color: #b0b0b0;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        margin-top: 10px;
+    }
+
+    /* RWD */
+    @media (max-width: 1024px) {
+        .printo-counters-grid { gap: 60px; }
+        .printo-number-box { font-size: 85px; }
+        .printo-plus { font-size: 40px; transform: translateY(-2px); }
+    }
+
+    @media (max-width: 768px) {
+        .printo-counters-grid { gap: 40px; }
+        .printo-number-box { font-size: 70px; }
+        .printo-plus { font-size: 35px; transform: translateY(-2px); }
+        .printo-label { font-size: 12px; }
+    }
+</style>
+
+<div class="printo-counters-wrapper">
+    <div class="printo-counters-grid" id="countersGrid">
+        
+        <!-- Licznik 1 -->
+        <div class="printo-counter-item">
+            <div class="printo-number-box">
+                <span class="pure-number" data-target="2">0</span>
+                <span class="printo-plus">+</span>
+            </div>
+            <div class="printo-label">Lata Doświadczenia</div>
+        </div>
+
+        <!-- Licznik 2 -->
+        <div class="printo-counter-item">
+            <div class="printo-number-box">
+                <span class="pure-number" data-target="100">0</span>
+                <span class="printo-plus">+</span>
+            </div>
+            <div class="printo-label">Zadowolonych Klientów</div>
+        </div>
+
+        <!-- Licznik 3 -->
+        <div class="printo-counter-item">
+            <div class="printo-number-box">
+                <span class="pure-number" data-target="300">0</span>
+                <span class="printo-plus">+</span>
+            </div>
+            <div class="printo-label">Projektów 3D</div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    function easeOutQuint(x) {
+        return 1 - Math.pow(1 - x, 5);
+    }
+
+    const animateValue = (obj, start, end, duration) => {
+        let startTimestamp = null;
+        const step = (timestamp) => {
+            if (!startTimestamp) startTimestamp = timestamp;
+            const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+            const easedProgress = easeOutQuint(progress);
+            const currentValue = Math.floor(easedProgress * (end - start) + start);
+            obj.innerHTML = currentValue;
+            
+            if (progress < 1) {
+                window.requestAnimationFrame(step);
+            } else {
+                obj.innerHTML = end;
+            }
+        };
+        window.requestAnimationFrame(step);
+    };
+
+    const startAnimation = () => {
+        const items = document.querySelectorAll('.printo-counter-item');
+        items.forEach((item, index) => {
+            setTimeout(() => {
+                item.classList.add('visible');
+                const numSpan = item.querySelector('.pure-number');
+                const target = parseInt(numSpan.getAttribute('data-target'));
+                animateValue(numSpan, 0, target, 3000);
+            }, index * 200);
+        });
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                startAnimation();
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.4 });
+
+    const targetSection = document.getElementById('countersGrid');
+    if (targetSection) {
+        observer.observe(targetSection);
+    }
+</script>
 
 	<footer id="footer" class="padding-large bg-primary">
 		<div class="container-lg text-white">
@@ -636,6 +781,7 @@
 
 
 </html>
+
 
 
 
