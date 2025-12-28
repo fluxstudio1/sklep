@@ -404,6 +404,98 @@
 	<script src="js/plugins.js"></script>
 	<script src="js/script.js"></script>
 <script src="https://kwesforms.com/v2/kf-script.js" defer></script>
+<style>
+    /* Stylizacja przycisku */
+    .scroll-top-btn {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        width: 50px;
+        height: 50px;
+        background-color: #000000; /* Pełna czerń pasująca do Twojej galerii */
+        color: #ffffff;
+        border-radius: 50%; /* Idealne kółeczko */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        z-index: 1000;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(20px);
+        transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        border: none;
+        outline: none;
+    }
+
+    /* Wygląd strzałki (używamy czystego CSS dla lekkości) */
+    .scroll-top-btn::after {
+        content: '';
+        width: 10px;
+        height: 10px;
+        border-top: 2px solid #ffffff;
+        border-right: 2px solid #ffffff;
+        transform: rotate(-45deg);
+        margin-top: 4px;
+        transition: transform 0.3s ease;
+    }
+
+    /* Klasa pokazująca przycisk (dodawana przez JS) */
+    .scroll-top-btn.is-active {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    /* Efekt najechania myszką */
+    .scroll-top-btn:hover {
+        background-color: #bc9c82; /* Twój kolor kawowy przy najechaniu */
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px rgba(188, 156, 130, 0.3);
+    }
+
+    .scroll-top-btn:hover::after {
+        transform: rotate(-45deg) translate(2px, -2px);
+    }
+
+    /* Ukrycie na bardzo małych ekranach (opcjonalnie) */
+    @media (max-width: 480px) {
+        .scroll-top-btn {
+            bottom: 20px;
+            right: 20px;
+            width: 45px;
+            height: 45px;
+        }
+    }
+</style>
+
+<!-- Przycisk w HTML -->
+<button class="scroll-top-btn" id="scrollTopBtn" aria-label="Powrót do góry"></button>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const scrollTopBtn = document.getElementById('scrollTopBtn');
+
+        // Funkcja sprawdzająca pozycję scrolla
+        window.addEventListener('scroll', () => {
+            // Przycisk pojawia się po przewinięciu 400px w dół
+            if (window.pageYOffset > 400) {
+                scrollTopBtn.classList.add('is-active');
+            } else {
+                scrollTopBtn.classList.remove('is-active');
+            }
+        });
+
+        // Obsługa kliknięcia - płynny powrót do góry
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth' // Płynna animacja przewijania
+            });
+        });
+    });
+</script>
 </body>
 
 
