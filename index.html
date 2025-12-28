@@ -341,7 +341,6 @@
 			</div>
 		</div>
 	</section>
-<!-- 1. SKOPIUJ TEN STYL DO SEKCJI <head> LUB NA GÓRĘ PLIKU -->
 <style>
     .custom-contact-container {
         width: 100%;
@@ -349,117 +348,119 @@
         flex-direction: column;
         align-items: center;
         padding: 80px 0;
-        /* Kolor tła dopasowany do Twojej strony */
         background-color: #f6f1ea; 
         margin: 0;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     }
 
     .contact-header {
         text-align: center;
-        margin-bottom: 40px;
+        margin-bottom: 50px;
     }
 
     .contact-header h2 {
-        font-size: 36px;
+        font-size: 42px;
         color: #1a1a1a;
         margin: 0;
         font-weight: 800;
-        letter-spacing: -1px;
+        letter-spacing: -1.5px;
     }
 
     .contact-header p {
         color: #777;
-        font-size: 15px;
-        margin-top: 12px;
-        max-width: 500px;
+        font-size: 16px;
+        margin-top: 15px;
+        max-width: 600px;
+        line-height: 1.6;
     }
 
     .horizontal-form-box {
         background: #ffffff;
-        padding: 40px;
-        border-radius: 28px;
-        box-shadow: 0 20px 60px rgba(0,0,0,0.07);
+        padding: 45px;
+        border-radius: 32px;
+        box-shadow: 0 25px 70px rgba(0,0,0,0.06);
         width: 95%;
-        /* Zwiększona szerokość maksymalna dla jeszcze szerszego efektu */
-        max-width: 1250px; 
+        max-width: 1300px; 
         box-sizing: border-box;
     }
 
     .form-row-layout {
         display: flex;
-        gap: 24px;
+        gap: 20px;
         flex-wrap: wrap;
-        align-items: flex-end;
+        align-items: flex-end; /* Wyrównanie wszystkich pól do dołu, by były w jednej linii */
     }
 
     .form-field {
         flex: 1;
-        min-width: 200px;
+        min-width: 220px;
         display: flex;
         flex-direction: column;
     }
 
-    /* Pole wiadomości i wgrywania pliku są traktowane priorytetowo w szerokości */
-    .form-field.wide {
+    /* Pole wiadomości - dopasowane szerokością */
+    .form-field.message-field {
         flex: 1.5;
     }
 
     .form-field label {
         font-size: 11px;
-        font-weight: 700;
-        color: #999;
+        font-weight: 800;
+        color: #aaa;
         margin-bottom: 12px;
         text-transform: uppercase;
-        letter-spacing: 1.5px;
+        letter-spacing: 1.2px;
         padding-left: 4px;
     }
 
     .form-field input, 
     .form-field textarea {
-        padding: 16px 20px;
+        padding: 18px 22px;
         border: 1px solid #f0f0f0;
-        border-radius: 18px;
+        border-radius: 20px;
         font-size: 15px;
         outline: none;
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        background-color: #fcfcfc; 
+        transition: all 0.3s ease;
+        background-color: #f8f8f8;
+        width: 100%;
+        box-sizing: border-box;
+        height: 60px; /* Stała wysokość dla idealnego wyrównania */
     }
 
     .form-field textarea {
-        height: 56px;
         resize: none;
+        line-height: 24px;
     }
 
-    /* Stylowy Upload Pliku */
+    /* Stylowy i naprawiony Upload Pliku */
     .file-upload-wrapper {
         position: relative;
         display: flex;
         align-items: center;
-        gap: 10px;
-        background: #f4f4f4;
-        padding: 10px 15px;
-        border-radius: 18px;
+        background: #f0f0f0;
         border: 2px dashed #e0e0e0;
-        transition: all 0.3s ease;
-        height: 56px;
+        border-radius: 20px;
+        height: 60px; /* Taka sama wysokość jak reszta pól */
+        padding: 0 20px;
         box-sizing: border-box;
-        overflow: hidden;
+        transition: all 0.3s ease;
+        cursor: pointer;
     }
 
     .file-upload-wrapper:hover {
-        border-color: #333;
-        background: #eee;
+        border-color: #000;
+        background: #ececec;
     }
 
     .file-upload-wrapper input[type="file"] {
         position: absolute;
-        left: 0;
         top: 0;
-        opacity: 0;
+        left: 0;
         width: 100%;
         height: 100%;
+        opacity: 0;
         cursor: pointer;
+        z-index: 2; /* Zapewnia, że kliknięcie trafi w input, ale nie blokuje innych pól */
     }
 
     .file-upload-text {
@@ -468,60 +469,61 @@
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
+        pointer-events: none; /* Tekst nie blokuje kliknięć w input */
     }
 
     .optional-tag {
         font-size: 10px;
-        color: #bbb;
+        color: #ccc;
         font-weight: normal;
-        margin-left: 5px;
+        margin-left: 4px;
+        text-transform: lowercase;
     }
 
     .form-field input:focus, 
     .form-field textarea:focus {
         border-color: #000;
         background-color: #fff;
-        box-shadow: 0 0 0 5px rgba(0,0,0,0.03);
+        box-shadow: 0 0 0 5px rgba(0,0,0,0.02);
     }
 
     .btn-submit-black {
         background: #000;
         color: #fff;
         border: none;
-        padding: 0 45px;
-        height: 56px;
-        border-radius: 18px;
+        padding: 0 40px;
+        height: 60px; /* Idealne wyrównanie z polami */
+        border-radius: 20px;
         font-size: 16px;
-        font-weight: bold;
+        font-weight: 700;
         cursor: pointer;
-        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        transition: all 0.3s ease;
+        white-space: nowrap;
         display: flex;
         align-items: center;
         justify-content: center;
-        white-space: nowrap;
     }
 
     .btn-submit-black:hover {
         background: #222;
-        transform: scale(1.02);
-        box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        transform: translateY(-2px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
     }
 
-    @media (max-width: 1100px) {
+    /* Responsywność */
+    @media (max-width: 1200px) {
         .form-row-layout { gap: 15px; }
     }
 
+    @media (max-width: 1024px) {
+        .form-field { min-width: 45%; }
+        .form-row-layout { align-items: stretch; }
+    }
+
     @media (max-width: 768px) {
-        .form-row-layout { 
-            flex-direction: column; 
-            align-items: stretch; 
-        }
-        .form-field.wide {
-            flex: 1;
-        }
-        .btn-submit-black {
-            width: 100%;
-        }
+        .form-row-layout { flex-direction: column; }
+        .form-field { min-width: 100%; }
+        .btn-submit-black { width: 100%; }
     }
 </style>
 
@@ -529,7 +531,7 @@
 <section class="custom-contact-container">
     <div class="contact-header">
         <h2>Skontaktuj się z nami</h2>
-        <p>Masz wizję? Prześlij nam szczegóły, a my zajmiemy się resztą.</p>
+        <p>Masz pomysł na projekt? Wyślij nam wiadomość, a my przygotujemy dla Ciebie darmową wycenę.</p>
     </div>
     
     <div class="horizontal-form-box">
@@ -537,25 +539,24 @@
             <div class="form-row-layout">
                 
                 <div class="form-field">
-                    <label>Imię i nazwisko</label>
-                    <input type="text" name="name" placeholder="Twoje dane" required>
+                    <label for="form-name">Imię i nazwisko</label>
+                    <input type="text" id="form-name" name="name" placeholder="Twoje dane" required>
                 </div>
 
                 <div class="form-field">
-                    <label>E-mail</label>
-                    <input type="email" name="email" placeholder="twoj@email.pl" required>
+                    <label for="form-email">Adres E-mail</label>
+                    <input type="email" id="form-email" name="email" placeholder="twoj@email.pl" required>
                 </div>
 
-                <div class="form-field wide">
-                    <label>Wiadomość</label>
-                    <textarea name="message" placeholder="W czym możemy pomóc?" required></textarea>
+                <div class="form-field message-field">
+                    <label for="form-msg">Wiadomość</label>
+                    <textarea id="form-msg" name="message" placeholder="W czym możemy pomóc?" required></textarea>
                 </div>
 
-                <!-- NOWE POLE: Wgrywanie pliku (Opcjonalne) -->
                 <div class="form-field">
-                    <label>Projekt / Logo <span class="optional-tag">(opcjonalnie)</span></label>
+                    <label>Logo / Projekt <span class="optional-tag">(opcjonalnie)</span></label>
                     <div class="file-upload-wrapper">
-                        <span class="file-upload-text">Dodaj plik lub logo...</span>
+                        <span class="file-upload-text">Dodaj plik...</span>
                         <input type="file" name="attachment" onchange="this.previousElementSibling.innerText = this.files[0].name">
                     </div>
                 </div>
@@ -732,6 +733,7 @@
 
 
 </html>
+
 
 
 
