@@ -873,78 +873,60 @@
 			</div>
 		</div>
 	</footer>
+<!-- KOD DO WKLEJENIA DO STOPKI -->
+<style>
+    .social-icons-simple {
+        display: flex;
+        gap: 20px;
+        align-items: center;
+    }
 
-import React from 'react';
+    .social-icon-item {
+        color: #ffffff; /* Kolor biały ikon */
+        transition: all 0.3s ease;
+        display: inline-flex;
+    }
 
-const SocialIconsOnly = () => {
-  const socialLinks = [
-    { 
-      // Facebook SVG
-      icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+    /* Efekt najechania - kolory marek */
+    .social-icon-item:hover { transform: scale(1.1); }
+    .si-fb:hover { color: #1877F2; }
+    .si-ig:hover { color: #E4405F; }
+    .si-yt:hover { color: #FF0000; }
+
+    .social-icon-item svg {
+        width: 24px;
+        height: 24px;
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 1.5;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+    }
+</style>
+
+<div class="social-icons-simple">
+    <!-- Facebook -->
+    <a href="#" class="social-icon-item si-fb" aria-label="Facebook">
+        <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+    </a>
+
+    <!-- Instagram -->
+    <a href="#" class="social-icon-item si-ig" aria-label="Instagram">
+        <svg viewBox="0 0 24 24">
+            <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+            <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
         </svg>
-      ), 
-      href: '#', 
-      label: 'Facebook', 
-      hoverColor: 'hover:text-[#1877F2]' 
-    },
-    { 
-      // Instagram SVG
-      icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-          <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
-          <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
-          <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
+    </a>
+
+    <!-- YouTube -->
+    <a href="#" class="social-icon-item si-yt" aria-label="YouTube">
+        <svg viewBox="0 0 24 24">
+            <path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 2-2 58.38 58.38 0 0 1 15 0 2 2 0 0 1 2 2 24.12 24.12 0 0 1 0 10 2 2 0 0 1-2 2 58.38 58.38 0 0 1-15 0 2 2 0 0 1-2-2z"></path>
+            <polyline points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"></polyline>
         </svg>
-      ), 
-      href: '#', 
-      label: 'Instagram', 
-      hoverColor: 'hover:text-[#E4405F]' 
-    },
-    { 
-      // YouTube SVG
-      icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 2-2 58.38 58.38 0 0 1 15 0 2 2 0 0 1 2 2 24.12 24.12 0 0 1 0 10 2 2 0 0 1-2 2 58.38 58.38 0 0 1-15 0 2 2 0 0 1-2-2z"/>
-          <polyline points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/>
-        </svg>
-      ), 
-      href: '#', 
-      label: 'YouTube', 
-      hoverColor: 'hover:text-[#FF0000]' 
-    },
-  ];
-
-  return (
-    <div className="flex items-center space-x-6">
-      {socialLinks.map((social, index) => (
-        <a
-          key={index}
-          href={social.href}
-          className={`text-white transition-all duration-300 ease-in-out transform hover:scale-110 ${social.hoverColor}`}
-          aria-label={social.label}
-        >
-          {social.icon}
-        </a>
-      ))}
-    </div>
-  );
-};
-
-export default SocialIconsOnly;
-
-// Komponent do podglądu
-const App = () => {
-  return (
-    <div className="min-h-screen flex items-center justify-center bg-slate-900">
-      <div className="p-10 border border-slate-700 rounded-xl">
-        <p className="text-slate-500 text-xs uppercase tracking-widest mb-4 text-center font-sans">Twoje Social Media</p>
-        <SocialIconsOnly />
-      </div>
-    </div>
-  );
-};
+    </a>
+</div>
 				<div class="col-md-6 text-center text-md-end">
 					<div class="copyright">
 					</div>
@@ -965,6 +947,7 @@ const App = () => {
 
 
 </html>
+
 
 
 
