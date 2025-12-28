@@ -411,20 +411,24 @@
 </script>
 <section>
   <form method="POST" class="kf-form" action="https://kwesforms.com/api/f/ENj4HTM316zUX667FG2L">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&display=swap" rel="stylesheet">
+
 <style>
     .printo-contact-section {
         width: 100%;
+        padding: 100px 0;
+        background-color: #ffffff;
+        font-family: 'Plus Jakarta Sans', sans-serif;
         display: flex;
         flex-direction: column;
         align-items: center;
-        padding: 60px 0;
-        background-color: #ffffff; /* Ciepłe tło pasujące do marki */
-        font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     }
 
     .printo-contact-header {
         text-align: center;
-        margin-bottom: 50px;
+        margin-bottom: 60px;
     }
 
     .printo-contact-header h2 {
@@ -443,70 +447,81 @@
         line-height: 1.6;
     }
 
-    .printo-form-box {
+    /* Panel z cieniutką rameczką zamiast mocnego cienia */
+    .printo-form-container {
         background: #ffffff;
-        padding: 45px;
-        border-radius: 40px;
-        box-shadow: 0 25px 70px rgba(0,0,0,0.04);
+        padding: 50px;
+        border-radius: 35px;
+        /* Cieniutka, elegancka ramka w kolorze tekstów */
+        border: 1px solid rgba(26, 26, 26, 0.15); 
         width: 95%;
-        max-width: 1300px;
+        max-width: 1200px;
         box-sizing: border-box;
+        transition: all 0.4s ease;
+    }
+
+    /* Delikatny efekt po najechaniu na cały panel */
+    .printo-form-container:hover {
+        border-color: rgba(26, 26, 26, 0.4);
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.02);
     }
 
     .printo-form-row {
         display: flex;
-        gap: 20px;
+        gap: 25px;
         flex-wrap: wrap;
-        align-items: flex-end; /* Wyrównanie wszystkich elementów do dołu */
+        align-items: flex-end;
     }
 
     .printo-field-group {
         flex: 1;
-        min-width: 240px;
+        min-width: 260px;
         display: flex;
         flex-direction: column;
     }
 
-    /* Pole wiadomości jest nieco szersze */
     .printo-field-group.msg-width {
-        flex: 1.5;
+        flex: 1.8;
     }
 
     .printo-field-group label {
         font-size: 11px;
         font-weight: 800;
-        color: #bbb;
+        color: #1a1a1a; /* Kolor labeli spójny z ramką */
         margin-bottom: 12px;
         text-transform: uppercase;
         letter-spacing: 1.5px;
         padding-left: 5px;
+        opacity: 0.6;
     }
 
     .printo-input, 
     .printo-textarea {
         padding: 18px 25px;
-        border: 1px solid #f0f0f0;
-        border-radius: 22px;
+        /* Pola również mają subtelną ramkę */
+        border: 1px solid #eeeeee;
+        border-radius: 18px;
         font-size: 15px;
         outline: none;
         transition: all 0.3s ease;
-        background-color: #f9f9f9;
+        background-color: #ffffff;
         width: 100%;
         box-sizing: border-box;
-        height: 65px; /* Stała wysokość dla wszystkich pól */
+        height: 62px;
         color: #1a1a1a;
+        font-family: inherit;
     }
 
     .printo-textarea {
         resize: none;
         line-height: 24px;
+        padding-top: 18px;
     }
 
     .printo-input:focus, 
     .printo-textarea:focus {
         border-color: #1a1a1a;
-        background-color: #fff;
-        box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+        background-color: #ffffff;
     }
 
     .printo-submit-btn {
@@ -514,27 +529,29 @@
         color: #ffffff;
         border: none;
         padding: 0 45px;
-        height: 65px; /* Taka sama wysokość jak pola */
-        border-radius: 22px;
-        font-size: 16px;
+        height: 62px;
+        border-radius: 18px;
+        font-size: 15px;
         font-weight: 700;
         cursor: pointer;
-        transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        transition: all 0.3s ease;
         white-space: nowrap;
         display: flex;
         align-items: center;
         justify-content: center;
+        text-transform: uppercase;
+        letter-spacing: 1px;
     }
 
     .printo-submit-btn:hover {
-        background: #333;
-        transform: translateY(-3px);
-        box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        background: #000000;
+        transform: scale(1.02);
     }
 
     /* Responsywność */
     @media (max-width: 1024px) {
         .printo-field-group { min-width: 45%; }
+        .printo-field-group.msg-width { flex: 1; min-width: 100%; }
     }
 
     @media (max-width: 768px) {
@@ -542,23 +559,23 @@
         .printo-field-group { min-width: 100%; }
         .printo-submit-btn { width: 100%; margin-top: 10px; }
         .printo-contact-header h2 { font-size: 32px; }
+        .printo-form-container { padding: 30px 20px; }
     }
 </style>
 
-<!-- 2. SKOPIUJ TEN KOD HTML I WKLEJ GO NA SWOJĄ STRONĘ -->
 <div class="printo-contact-section">
     <div class="printo-contact-header">
-        <h2>Porozmawiajmy o projekcie</h2>
-        <p>Masz pomysł na unikalny gadżet? Napisz do nas – przygotujemy dla Ciebie darmową wycenę w ciągu 24h.</p>
+        <h2>Skontaktuj się z nami</h2>
+        <p>Potrzebujesz szybkiej wyceny? Wypełnij formularz, a nasz zespół skontaktuje się z Tobą w ciągu kilku godzin.</p>
     </div>
 
-    <div class="printo-form-box">
+    <div class="printo-form-container">
         <form action="#" method="POST">
             <div class="printo-form-row">
                 
                 <div class="printo-field-group">
                     <label for="p-name">Imię i nazwisko</label>
-                    <input type="text" id="p-name" name="name" class="printo-input" placeholder="Twoje dane" required>
+                    <input type="text" id="p-name" name="name" class="printo-input" placeholder="Wpisz swoje dane" required>
                 </div>
 
                 <div class="printo-field-group">
@@ -567,12 +584,12 @@
                 </div>
 
                 <div class="printo-field-group msg-width">
-                    <label for="p-msg">Twoja wiadomość</label>
-                    <textarea id="p-msg" name="message" class="printo-textarea" placeholder="W czym możemy pomóc?" required></textarea>
+                    <label for="p-msg">Wiadomość</label>
+                    <textarea id="p-msg" name="message" class="printo-textarea" placeholder="Opisz krótko swój projekt..." required></textarea>
                 </div>
 
                 <button type="submit" class="printo-submit-btn">
-                    Wyślij wiadomość
+                    Wyślij
                 </button>
 
             </div>
@@ -891,6 +908,7 @@
 
 
 </html>
+
 
 
 
