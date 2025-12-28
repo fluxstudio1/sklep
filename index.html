@@ -26,223 +26,7 @@
 	<link
 		href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Quicksand:wght@300..700&display=swap"
 		rel="stylesheet">
-.contact-header {
-    text-align: center;
-    margin-bottom: 50px;
-}
 
-.contact-header h2 {
-    font-size: 42px;
-    color: #1a1a1a;
-    margin: 0;
-    font-weight: 800;
-    letter-spacing: -1.5px;
-}
-
-.contact-header p {
-    color: #777;
-    font-size: 16px;
-    margin-top: 15px;
-    max-width: 600px;
-    line-height: 1.6;
-}
-
-.horizontal-form-box {
-    background: #ffffff;
-    padding: 45px;
-    border-radius: 32px;
-    box-shadow: 0 25px 70px rgba(0,0,0,0.06);
-    width: 95%;
-    max-width: 1300px; 
-    box-sizing: border-box;
-}
-
-.form-row-layout {
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-    align-items: flex-end;
-}
-
-.form-field {
-    flex: 1;
-    min-width: 220px;
-    display: flex;
-    flex-direction: column;
-    position: relative; /* Zapewnia izolację warstw */
-}
-
-.form-field.message-field {
-    flex: 1.5;
-}
-
-.form-field label {
-    font-size: 11px;
-    font-weight: 800;
-    color: #aaa;
-    margin-bottom: 12px;
-    text-transform: uppercase;
-    letter-spacing: 1.2px;
-    padding-left: 4px;
-}
-
-.form-field input, 
-.form-field textarea {
-    padding: 18px 22px;
-    border: 1px solid #f0f0f0;
-    border-radius: 20px;
-    font-size: 15px;
-    outline: none;
-    transition: all 0.3s ease;
-    background-color: #f8f8f8;
-    width: 100%;
-    box-sizing: border-box;
-    height: 60px;
-}
-
-.form-field textarea {
-    resize: none;
-    line-height: 24px;
-}
-
-.form-field input:focus, 
-.form-field textarea:focus {
-    border-color: #000;
-    background-color: #fff;
-    box-shadow: 0 0 0 5px rgba(0,0,0,0.02);
-}
-
-/* Naprawiony kontener uploadu - izolacja z-index */
-.file-upload-wrapper {
-    position: relative;
-    display: flex;
-    align-items: center;
-    background: #f0f0f0;
-    border: 2px dashed #e0e0e0;
-    border-radius: 20px;
-    height: 60px;
-    padding: 0 20px;
-    box-sizing: border-box;
-    transition: all 0.3s ease;
-    cursor: pointer;
-    overflow: hidden;
-}
-
-.file-upload-wrapper:hover {
-    border-color: #000;
-    background: #ececec;
-}
-
-/* Input file nie może wykraczać poza swój kontener */
-.file-upload-wrapper input[type=&quot;file&quot;] {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    cursor: pointer;
-    z-index: 5;
-}
-
-.file-upload-text {
-    font-size: 13px;
-    color: #666;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    z-index: 1;
-}
-
-.optional-tag {
-    font-size: 10px;
-    color: #ccc;
-    font-weight: normal;
-    margin-left: 4px;
-    text-transform: lowercase;
-}
-
-.btn-submit-black {
-    background: #000;
-    color: #fff;
-    border: none;
-    padding: 0 40px;
-    height: 60px;
-    border-radius: 20px;
-    font-size: 16px;
-    font-weight: 700;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    white-space: nowrap;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.btn-submit-black:hover {
-    background: #222;
-    transform: translateY(-2px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-}
-
-@media (max-width: 1200px) {
-    .form-row-layout { gap: 15px; }
-}
-
-@media (max-width: 1024px) {
-    .form-field { min-width: 45%; }
-    .form-row-layout { align-items: stretch; }
-}
-
-@media (max-width: 768px) {
-    .form-row-layout { flex-direction: column; }
-    .form-field { min-width: 100%; }
-    .btn-submit-black { width: 100%; }
-}
-
-
-</style>
-
-<!-- 2. SKOPIUJ TEN ELEMENT I WKLEJ W MIEJSCE, GDZIE MA BYĆ FORMULARZ -->
-
-<section class="custom-contact-container">
-<div class="contact-header">
-<h2>Skontaktuj się z nami</h2>
-<p>Masz pomysł na projekt? Wyślij nam wiadomość, a my przygotujemy dla Ciebie darmową wycenę.</p>
-</div>
-
-<div class="horizontal-form-box">
-    <form action="TUTAJ_WKLEJ_LINK_Z_GETFORM" method="POST" enctype="multipart/form-data">
-        <div class="form-row-layout">
-            
-            <div class="form-field">
-                <label for="form-name">Imię i nazwisko</label>
-                <input type="text" id="form-name" name="name" placeholder="Twoje dane" required>
-            </div>
-
-            <div class="form-field">
-                <label for="form-email">Adres E-mail</label>
-                <input type="email" id="form-email" name="email" placeholder="twoj@email.pl" required>
-            </div>
-
-            <div class="form-field message-field">
-                <label for="form-msg">Wiadomość</label>
-                <textarea id="form-msg" name="message" placeholder="W czym możemy pomóc?" required></textarea>
-            </div>
-
-            <div class="form-field">
-                <label>Logo / Projekt <span class="optional-tag">(opcjonalnie)</span></label>
-                <div class="file-upload-wrapper">
-                    <span class="file-upload-text">Dodaj plik...</span>
-                    <input type="file" name="attachment" onchange="this.previousElementSibling.innerText = this.files[0].name">
-                </div>
-            </div>
-
-            <button type="submit" class="btn-submit-black">Wyślij wiadomość</button>
-
-        </div>
-    </form>
-</div>
 </head>
 
 <body>
@@ -517,37 +301,173 @@
 		</div>
 	</section>
   <form method="POST" class="kf-form" action="https://kwesforms.com/api/f/ENj4HTM316zUX667FG2L">
-<div class="horizontal-form-box">
-    <form action="TUTAJ_WKLEJ_LINK_Z_GETFORM" method="POST" enctype="multipart/form-data">
-        <div class="form-row-layout">
-            
-            <div class="form-field">
-                <label for="form-name">Imię i nazwisko</label>
-                <input type="text" id="form-name" name="name" placeholder="Twoje dane" required>
-            </div>
+<style>
+    .printo-contact-section {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 60px 0;
+        background-color: #f6f1ea; /* Ciepłe tło pasujące do marki */
+        font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    }
 
-            <div class="form-field">
-                <label for="form-email">Adres E-mail</label>
-                <input type="email" id="form-email" name="email" placeholder="twoj@email.pl" required>
-            </div>
+    .printo-contact-header {
+        text-align: center;
+        margin-bottom: 50px;
+    }
 
-            <div class="form-field message-field">
-                <label for="form-msg">Wiadomość</label>
-                <textarea id="form-msg" name="message" placeholder="W czym możemy pomóc?" required></textarea>
-            </div>
+    .printo-contact-header h2 {
+        font-size: 42px;
+        color: #1a1a1a;
+        margin: 0;
+        font-weight: 800;
+        letter-spacing: -1.5px;
+    }
 
-            <div class="form-field">
-                <label>Logo / Projekt <span class="optional-tag">(opcjonalnie)</span></label>
-                <div class="file-upload-wrapper">
-                    <span class="file-upload-text">Dodaj plik...</span>
-                    <input type="file" name="attachment" onchange="this.previousElementSibling.innerText = this.files[0].name">
+    .printo-contact-header p {
+        color: #777;
+        font-size: 16px;
+        margin-top: 15px;
+        max-width: 600px;
+        line-height: 1.6;
+    }
+
+    .printo-form-box {
+        background: #ffffff;
+        padding: 45px;
+        border-radius: 40px;
+        box-shadow: 0 25px 70px rgba(0,0,0,0.04);
+        width: 95%;
+        max-width: 1300px;
+        box-sizing: border-box;
+    }
+
+    .printo-form-row {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+        align-items: flex-end; /* Wyrównanie wszystkich elementów do dołu */
+    }
+
+    .printo-field-group {
+        flex: 1;
+        min-width: 240px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* Pole wiadomości jest nieco szersze */
+    .printo-field-group.msg-width {
+        flex: 1.5;
+    }
+
+    .printo-field-group label {
+        font-size: 11px;
+        font-weight: 800;
+        color: #bbb;
+        margin-bottom: 12px;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        padding-left: 5px;
+    }
+
+    .printo-input, 
+    .printo-textarea {
+        padding: 18px 25px;
+        border: 1px solid #f0f0f0;
+        border-radius: 22px;
+        font-size: 15px;
+        outline: none;
+        transition: all 0.3s ease;
+        background-color: #f9f9f9;
+        width: 100%;
+        box-sizing: border-box;
+        height: 65px; /* Stała wysokość dla wszystkich pól */
+        color: #1a1a1a;
+    }
+
+    .printo-textarea {
+        resize: none;
+        line-height: 24px;
+    }
+
+    .printo-input:focus, 
+    .printo-textarea:focus {
+        border-color: #1a1a1a;
+        background-color: #fff;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    }
+
+    .printo-submit-btn {
+        background: #1a1a1a;
+        color: #ffffff;
+        border: none;
+        padding: 0 45px;
+        height: 65px; /* Taka sama wysokość jak pola */
+        border-radius: 22px;
+        font-size: 16px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        white-space: nowrap;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .printo-submit-btn:hover {
+        background: #333;
+        transform: translateY(-3px);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    }
+
+    /* Responsywność */
+    @media (max-width: 1024px) {
+        .printo-field-group { min-width: 45%; }
+    }
+
+    @media (max-width: 768px) {
+        .printo-form-row { flex-direction: column; align-items: stretch; }
+        .printo-field-group { min-width: 100%; }
+        .printo-submit-btn { width: 100%; margin-top: 10px; }
+        .printo-contact-header h2 { font-size: 32px; }
+    }
+</style>
+
+<!-- 2. SKOPIUJ TEN KOD HTML I WKLEJ GO NA SWOJĄ STRONĘ -->
+<div class="printo-contact-section">
+    <div class="printo-contact-header">
+        <h2>Porozmawiajmy o projekcie</h2>
+        <p>Masz pomysł na unikalny gadżet? Napisz do nas – przygotujemy dla Ciebie darmową wycenę w ciągu 24h.</p>
+    </div>
+
+    <div class="printo-form-box">
+        <form action="#" method="POST">
+            <div class="printo-form-row">
+                
+                <div class="printo-field-group">
+                    <label for="p-name">Imię i nazwisko</label>
+                    <input type="text" id="p-name" name="name" class="printo-input" placeholder="Twoje dane" required>
                 </div>
+
+                <div class="printo-field-group">
+                    <label for="p-email">Adres E-mail</label>
+                    <input type="email" id="p-email" name="email" class="printo-input" placeholder="twoj@email.pl" required>
+                </div>
+
+                <div class="printo-field-group msg-width">
+                    <label for="p-msg">Twoja wiadomość</label>
+                    <textarea id="p-msg" name="message" class="printo-textarea" placeholder="W czym możemy pomóc?" required></textarea>
+                </div>
+
+                <button type="submit" class="printo-submit-btn">
+                    Wyślij wiadomość
+                </button>
+
             </div>
-
-            <button type="submit" class="btn-submit-black">Wyślij wiadomość</button>
-
-        </div>
-    </form>
+        </form>
+    </div>
 </div>
 <section>
 	<section id="post-grid" class="padding-large">
@@ -716,6 +636,7 @@
 
 
 </html>
+
 
 
 
