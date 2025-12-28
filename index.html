@@ -197,109 +197,231 @@
 				</div>
 			</div>
 
-			<div class="row">
-				<div class="col-md-12 position-relative">
-					<div class="testimonial-carousel swiper overflow-hidden">
-						<div class="swiper-wrapper">
-							<div class="swiper-slide">
-								<div class="card testimonials-inner">
-									<div class="card-body">
-										<p class="card-text mb-2">Lorem ipsum dolor sit amet, elit consectetur
-											adipiscing. Odio tincidunt et, massa, turpis nec dolor posuere tempus. Nulla
-											congue et dolor sit amet, elit consectetur adipiscing.
-										</p>
-										<div class="testimonial-author">
-											<div class="author-detail">
-												<h3 class="name m-0">Lucas Wolfer</h3>
-												<span class="author-title text-primary">Ceo - Raisins</span>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="swiper-slide">
-								<div class="card testimonials-inner">
-									<div class="card-body">
-										<p class="card-text mb-2">Ipsum dolor sit amet, elit consectetur adipiscing.
-											Odio tincidunt et turpis nec dolor posuere tempus Nulla congue et dolor sit
-											amet, elit consectetur adipiscing.</p>
-										<div class="testimonial-author">
-											<div class="author-detail">
-												<h3 class="name m-0">Jennie</h3>
-												<div class="author-title text-primary">General Manager</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="swiper-slide">
-								<div class="card testimonials-inner">
-									<div class="card-body">
-										<p class="card-text mb-2">“Dolor sit amet, elit consectetur adipiscing. Odio
-											tincidunt et, massa, turpis nec dolor posuere tempus. Nulla congue et dolor
-											sit amet, elit consectetur adipiscing.”</p>
-										<div class="testimonial-author">
-											<div class="author-detail">
-												<h3 class="name m-0">Simple</h3>
-												<div class="author-title text-primary">Staff</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="swiper-slide">
-								<div class="card testimonials-inner">
-									<div class="card-body">
-										<p class="card-text mb-2">Lorem ipsum dolor sit amet, elit consectetur
-											adipiscing. Odio tincidunt et, massa, turpis nec dolor posuere tempus. Nulla
-											congue et dolor sit amet, elit consectetur adipiscing.
-										</p>
-										<div class="testimonial-author">
-											<div class="author-detail">
-												<h3 class="name m-0">Lucas Wolfer</h3>
-												<span class="author-title text-primary">Ceo - Raisins</span>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="swiper-slide">
-								<div class="card testimonials-inner">
-									<div class="card-body">
-										<p class="card-text mb-2">Ipsum dolor sit amet, elit consectetur adipiscing.
-											Odio tincidunt et turpis nec dolor posuere tempus Nulla congue et dolor sit
-											amet, elit consectetur adipiscing.</p>
-										<div class="testimonial-author">
-											<div class="author-detail">
-												<h3 class="name m-0">Jennie</h3>
-												<div class="author-title text-primary">General Manager</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="swiper-slide">
-								<div class="card testimonials-inner">
-									<div class="card-body">
-										<p class="card-text mb-2">“Dolor sit amet, elit consectetur adipiscing. Odio
-											tincidunt et, massa, turpis nec dolor posuere tempus. Nulla congue et dolor
-											sit amet, elit consectetur adipiscing.”</p>
-										<div class="testimonial-author">
-											<div class="author-detail">
-												<h3 class="name m-0">Simple</h3>
-												<div class="author-title text-primary">Staff</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="swiper-pagination"></div>
-				</div>
-			</div>
-		</div>
-	</section>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&display=swap" rel="stylesheet">
+
+<style>
+    .printo-reviews-wrapper {
+        width: 100%;
+        padding: 100px 0;
+        background-color: transparent;
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        overflow: hidden; /* Ukrywamy wystające opinie */
+        position: relative;
+    }
+
+    .printo-reviews-title {
+        text-align: center;
+        font-size: 32px;
+        font-weight: 800;
+        color: #1a1a1a;
+        margin-bottom: 50px;
+        letter-spacing: -1px;
+    }
+
+    /* Kontener dla slidera */
+    .printo-slider-container {
+        display: flex;
+        width: max-content; /* Pozwala zawartości rozciągnąć się w linii */
+        animation: scroll-left 40s linear infinite; /* Płynny, stały ruch co 40s (wolno) */
+    }
+
+    /* Zatrzymanie po najechaniu myszką */
+    .printo-slider-container:hover {
+        animation-play-state: paused;
+    }
+
+    .printo-review-card {
+        background: #ffffff;
+        width: 350px;
+        margin: 0 15px;
+        padding: 35px;
+        border-radius: 30px;
+        box-shadow: 0 15px 40px rgba(0,0,0,0.03);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        transition: transform 0.3s ease;
+        border: 1px solid #f0f0f0;
+    }
+
+    .printo-review-card:hover {
+        transform: translateY(-10px);
+        border-color: #1a1a1a;
+    }
+
+    .printo-stars {
+        color: #1a1a1a;
+        font-size: 18px;
+        margin-bottom: 15px;
+    }
+
+    .printo-review-text {
+        font-size: 15px;
+        color: #444;
+        line-height: 1.6;
+        font-weight: 500;
+        margin-bottom: 25px;
+        flex-grow: 1;
+    }
+
+    .printo-reviewer-info {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .printo-reviewer-avatar {
+        width: 45px;
+        height: 45px;
+        background: #f6f1ea;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 800;
+        color: #1a1a1a;
+        font-size: 14px;
+        text-transform: uppercase;
+    }
+
+    .printo-reviewer-details {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .printo-reviewer-name {
+        font-size: 14px;
+        font-weight: 800;
+        color: #1a1a1a;
+    }
+
+    .printo-reviewer-tag {
+        font-size: 11px;
+        color: #aaa;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    /* Kluczowa animacja nieskończonego przewijania */
+    @keyframes scroll-left {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); } /* Przesuwamy o połowę szerokości kontenera */
+    }
+
+    /* Dodajemy gradienty na bokach dla efektu "wyłaniania się" */
+    .printo-reviews-wrapper::before,
+    .printo-reviews-wrapper::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        width: 150px;
+        height: 100%;
+        z-index: 2;
+        pointer-events: none;
+    }
+
+    .printo-reviews-wrapper::before {
+        left: 0;
+        background: linear-gradient(to right, #f6f1ea 0%, rgba(246,241,234,0) 100%);
+    }
+
+    .printo-reviews-wrapper::after {
+        right: 0;
+        background: linear-gradient(to left, #f6f1ea 0%, rgba(246,241,234,0) 100%);
+    }
+</style>
+
+<div class="printo-reviews-wrapper">
+    <h2 class="printo-reviews-title">Opinie naszych klientów</h2>
+
+    <div class="printo-slider-container" id="reviewSlider">
+        <!-- Grupa 1 (Oryginalna) -->
+        <div class="printo-review-card">
+            <div class="printo-stars">★★★★★</div>
+            <p class="printo-review-text">"Niesamowita jakość wydruków 3D. Każdy detal został odwzorowany idealnie, a kontakt z obsługą był błyskawiczny."</p>
+            <div class="printo-reviewer-info">
+                <div class="printo-reviewer-avatar">MK</div>
+                <div class="printo-reviewer-details">
+                    <span class="printo-reviewer-name">Michał Kowalski</span>
+                    <span class="printo-reviewer-tag">Projektant Wnętrz</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="printo-review-card">
+            <div class="printo-stars">★★★★★</div>
+            <p class="printo-review-text">"Zamówiłem personalizowany gadżet na prezent. Czas realizacji przeszedł moje oczekiwania. Polecam każdemu!"</p>
+            <div class="printo-reviewer-info">
+                <div class="printo-reviewer-avatar">AN</div>
+                <div class="printo-reviewer-details">
+                    <span class="printo-reviewer-name">Anna Nowak</span>
+                    <span class="printo-reviewer-tag">Klient Indywidualny</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="printo-review-card">
+            <div class="printo-stars">★★★★★</div>
+            <p class="printo-review-text">"Profesjonalne podejście do druku technicznego. Elementy pasują co do milimetra. Na pewno wrócę z kolejnym projektem."</p>
+            <div class="printo-reviewer-info">
+                <div class="printo-reviewer-avatar">PT</div>
+                <div class="printo-reviewer-details">
+                    <span class="printo-reviewer-name">Piotr Tatarkiewicz</span>
+                    <span class="printo-reviewer-tag">Inżynier</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="printo-review-card">
+            <div class="printo-stars">★★★★★</div>
+            <p class="printo-review-text">"Najlepsza obsługa klienta z jaką miałam do czynienia w branży 3D. Doradzili w doborze materiału i pomogli poprawić model."</p>
+            <div class="printo-reviewer-info">
+                <div class="printo-reviewer-avatar">KW</div>
+                <div class="printo-reviewer-details">
+                    <span class="printo-reviewer-name">Katarzyna Wiśniewska</span>
+                    <span class="printo-reviewer-tag">Architekt</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="printo-review-card">
+            <div class="printo-stars">★★★★★</div>
+            <p class="printo-review-text">"Szybko, tanio i przede wszystkim solidnie. Modele 3D są bardzo wytrzymałe i mają gładkie wykończenie."</p>
+            <div class="printo-reviewer-info">
+                <div class="printo-reviewer-avatar">RZ</div>
+                <div class="printo-reviewer-details">
+                    <span class="printo-reviewer-name">Robert Zieliński</span>
+                    <span class="printo-reviewer-tag">Startup Founder</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="printo-review-card">
+            <div class="printo-stars">★★★★★</div>
+            <p class="printo-review-text">"Korzystamy z usług Printo regularnie przy prototypowaniu. Zawsze na czas i w najwyższej jakości."</p>
+            <div class="printo-reviewer-info">
+                <div class="printo-reviewer-avatar">JS</div>
+                <div class="printo-reviewer-details">
+                    <span class="printo-reviewer-name">Janusz Sadowski</span>
+                    <span class="printo-reviewer-tag">Dział R&D</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Grupa 2 (Kopia dla efektu nieskończoności) -->
+        <!-- Ten sam zestaw kart musi być powtórzony, aby animacja była płynna -->
+    </div>
+</div>
+
+<script>
+    // Automatyczne klonowanie kart, aby zapewnić efekt "nieskończoności"
+    const slider = document.getElementById('reviewSlider');
+    const cards = slider.innerHTML;
+    slider.innerHTML += cards; // Powielamy zawartość
+</script>
+<section>
   <form method="POST" class="kf-form" action="https://kwesforms.com/api/f/ENj4HTM316zUX667FG2L">
 <style>
     .printo-contact-section {
@@ -781,6 +903,7 @@
 
 
 </html>
+
 
 
 
