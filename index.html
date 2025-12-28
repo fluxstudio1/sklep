@@ -873,27 +873,29 @@
 			</div>
 		</div>
 	</footer>
-<!-- KOD DO WKLEJENIA DO STOPKI -->
+<!-- WKLEJ TEN KOD W MIEJSCE TWOJEJ SEKCJI <div class="social-links"> -->
 <style>
-    .social-icons-simple {
+    /* Reset listy dla ikon social media */
+    .social-links ul {
         display: flex;
+        list-style: none;
+        padding: 0;
         gap: 20px;
         align-items: center;
     }
 
-    .social-icon-item {
-        color: #ffffff; /* Kolor biały ikon */
+    /* Styl bazowy ikony */
+    .social-links a {
+        color: rgba(255, 255, 255, 0.8); /* Jasny biały */
         transition: all 0.3s ease;
-        display: inline-flex;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
     }
 
-    /* Efekt najechania - kolory marek */
-    .social-icon-item:hover { transform: scale(1.1); }
-    .si-fb:hover { color: #1877F2; }
-    .si-ig:hover { color: #E4405F; }
-    .si-yt:hover { color: #FF0000; }
-
-    .social-icon-item svg {
+    /* Wielkość ikon SVG */
+    .social-links svg {
         width: 24px;
         height: 24px;
         fill: none;
@@ -902,30 +904,38 @@
         stroke-linecap: round;
         stroke-linejoin: round;
     }
+
+    /* Efekt najechania - powiększenie i kolory marek */
+    .social-links a:hover {
+        transform: scale(1.15);
+    }
+    
+    .link-fb:hover { color: #1877F2 !important; }
+    .link-yt:hover { color: #FF0000 !important; }
+    .link-ig:hover { color: #E4405F !important; }
 </style>
 
-<div class="social-icons-simple">
-    <!-- Facebook -->
-    <a href="#" class="social-icon-item si-fb" aria-label="Facebook">
-        <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
-    </a>
-
-    <!-- Instagram -->
-    <a href="#" class="social-icon-item si-ig" aria-label="Instagram">
-        <svg viewBox="0 0 24 24">
-            <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
-            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-            <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
-        </svg>
-    </a>
-
-    <!-- YouTube -->
-    <a href="#" class="social-icon-item si-yt" aria-label="YouTube">
-        <svg viewBox="0 0 24 24">
-            <path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 2-2 58.38 58.38 0 0 1 15 0 2 2 0 0 1 2 2 24.12 24.12 0 0 1 0 10 2 2 0 0 1-2 2 58.38 58.38 0 0 1-15 0 2 2 0 0 1-2-2z"></path>
-            <polyline points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"></polyline>
-        </svg>
-    </a>
+<div class="social-links">
+    <ul class="justify-content-center justify-content-md-start m-0">
+        <!-- Facebook -->
+        <li>
+            <a href="#" class="link-fb" aria-label="Facebook">
+                <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+            </a>
+        </li>
+        <!-- YouTube -->
+        <li>
+            <a href="#" class="link-yt" aria-label="YouTube">
+                <svg viewBox="0 0 24 24"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 2-2 58.38 58.38 0 0 1 15 0 2 2 0 0 1 2 2 24.12 24.12 0 0 1 0 10 2 2 0 0 1-2 2 58.38 58.38 0 0 1-15 0 2 2 0 0 1-2-2z"></path><polyline points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"></polyline></svg>
+            </a>
+        </li>
+        <!-- Instagram -->
+        <li>
+            <a href="#" class="link-ig" aria-label="Instagram">
+                <svg viewBox="0 0 24 24"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line></svg>
+            </a>
+        </li>
+    </ul>
 </div>
 				<div class="col-md-6 text-center text-md-end">
 					<div class="copyright">
@@ -947,6 +957,7 @@
 
 
 </html>
+
 
 
 
