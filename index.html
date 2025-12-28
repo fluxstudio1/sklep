@@ -354,7 +354,78 @@
         </div>
     </div>
 </section>
+<!-- 
+    INSTRUKCJA:
+    Aby zmienić adres, na który kieruje przycisk, znajdź poniżej:
+    href="TWOJ_LINK_TUTAJ" 
+    i podmień tekst w cudzysłowie na właściwy adres (np. podstrona-galeria.html).
+-->
 
+<style>
+    /* Stylizacja kontenera (opcjonalna, służy do wyśrodkowania przycisku na stronie) */
+    .custom-btn-container {
+        display: flex;
+        justify-content: center;
+        padding: 40px 0;
+        font-family: 'Plus Jakarta Sans', sans-serif; /* Dopasowane do reszty strony */
+    }
+
+    /* Główny styl przycisku */
+    .btn-see-more-standalone {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        background-color: #000000; /* Głęboka czerń */
+        color: #ffffff;
+        padding: 16px 45px;
+        border-radius: 50px;
+        font-size: 15px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1.2px;
+        text-decoration: none; /* Usuwa podkreślenie linku */
+        transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        border: 2px solid #000000;
+    }
+
+    /* Efekt po najechaniu myszką */
+    .btn-see-more-standalone:hover {
+        background-color: #bc9c82; /* Twój kolor kawowy / brązowy */
+        border-color: #bc9c82;
+        transform: translateY(-5px);
+        box-shadow: 0 15px 35px rgba(188, 156, 130, 0.35);
+        color: #ffffff;
+    }
+
+    /* Styl strzałki SVG */
+    .btn-see-more-standalone svg {
+        transition: transform 0.3s ease;
+    }
+
+    .btn-see-more-standalone:hover svg {
+        transform: translateX(6px); /* Przesunięcie strzałki w prawo */
+    }
+
+    /* RWD: Mniejszy przycisk na telefonach */
+    @media (max-width: 480px) {
+        .btn-see-more-standalone {
+            padding: 14px 35px;
+            font-size: 13px;
+        }
+    }
+</style>
+
+<div class="custom-btn-container">
+    <!-- TUTAJ WPISZ SWÓJ LINK -->
+    <a href="https://fluxstudio1.github.io/sklep/" class="btn-see-more-standalone">
+        Zobacz więcej
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+        </svg>
+    </a>
+</div>
 <script>
     document.addEventListener('DOMContentLoaded', () => {
         const observerOptions = {
@@ -1378,6 +1449,7 @@
 
 
 </html>
+
 
 
 
