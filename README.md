@@ -1,2 +1,2 @@
-# sklep
-sklep
+# printlu.pl
+printlu.pl
