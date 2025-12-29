@@ -432,107 +432,85 @@
     </div>
 </section>
 
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const buttons = document.querySelectorAll('.filter-btn');
-        const items = document.querySelectorAll('.filter-item');
+<footer class="pt-16 pb-8 px-6">
+        <div class="max-w-7xl mx-auto">
+            <!-- Zmiana układu grid dla lepszego pozycjonowania -->
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 mb-12">
+                
+                <!-- KOLUMNA 1: Logo i opis (zajmuje 4 jednostki) -->
+                <div class="md:col-span-4">
+                    <div class="logo-container mb-6">
+                        <!-- MIEJSCE NA TWOJE LOGO -->
+                        <img src="https://placehold.co/200x60/d1d5db/4b5563?text=TWOJE+LOGO" alt="Logo Twojej Firmy">
+                    </div>
+                    <p class="text-gray-500 text-sm leading-relaxed max-w-sm">
+                        Naturalne podejście do designu. Tworzymy z pasją, dbając o każdy szczegół Twojej marki w pastelowych barwach.
+                    </p>
+                </div>
 
-        buttons.forEach(button => {
-            button.addEventListener('click', () => {
-                // Aktywacja przycisku
-                buttons.forEach(btn => btn.classList.remove('active'));
-                button.classList.add('active');
+                <!-- KOLUMNA 2: O nas (zajmuje 2 jednostki) -->
+                <div class="md:col-span-2">
+                    <h3>O nas</h3>
+                    <ul class="space-y-4 text-sm">
+                        <li><a href="#" class="footer-link">Nasza misja</a></li>
+                        <li><a href="#" class="footer-link">Projekty</a></li>
+                        <li><a href="#" class="footer-link">Zespół</a></li>
+                        <li><a href="#" class="footer-link">Kontakt</a></li>
+                    </ul>
+                </div>
 
-                const filter = button.getAttribute('data-filter');
+                <!-- KOLUMNA 3: Oferta (Przesunięta bliżej kolumny 4) -->
+                <div class="md:col-span-2 md:col-start-8">
+                    <h3>Oferta</h3>
+                    <ul class="space-y-4 text-sm">
+                        <li><a href="#" class="footer-link">Konsultacje</a></li>
+                        <li><a href="#" class="footer-link">Sklep online</a></li>
+                        <li><a href="#" class="footer-link">Warsztaty</a></li>
+                        <li><a href="#" class="footer-link">Współpraca</a></li>
+                    </ul>
+                </div>
 
-                // Filtrowanie z animacją
-                items.forEach(item => {
-                    const category = item.getAttribute('data-category');
+                <!-- KOLUMNA 4: Kontakt i Social Media (zajmuje 3 jednostki) -->
+                <div class="md:col-span-3 md:col-start-10">
+                    <h3>Znajdź nas</h3>
+                    
+                    <!-- Dane kontaktowe -->
+                    <div class="text-gray-600 text-sm space-y-3 mb-8">
+                        <p class="flex items-center">
+                            <i class="fa-regular fa-envelope mr-3 w-5 text-gray-400"></i> 
+                            hello@twojadomena.pl
+                        </p>
+                        <p class="flex items-center">
+                            <i class="fa-solid fa-phone mr-3 w-5 text-gray-400"></i> 
+                            +48 123 456 789
+                        </p>
+                    </div>
 
-                    if (filter === 'all' || filter === category) {
-                        item.classList.remove('hidden');
-                        setTimeout(() => {
-                            item.classList.add('show');
-                        }, 50);
-                    } else {
-                        item.classList.remove('show');
-                        item.classList.add('hidden');
-                    }
-                });
-            });
-        });
-    });
-</script>
+                    <!-- Przyciski Social Media (Ażurowe, białe) -->
+                    <div class="flex space-x-3">
+                        <a href="https://instagram.com/" target="_blank" class="social-icon-outline" title="Instagram">
+                            <i class="fa-brands fa-instagram text-sm"></i>
+                        </a>
+                        <a href="https://facebook.com/" target="_blank" class="social-icon-outline" title="Facebook">
+                            <i class="fa-brands fa-facebook-f text-sm"></i>
+                        </a>
+                        <a href="https://youtube.com/" target="_blank" class="social-icon-outline" title="YouTube">
+                            <i class="fa-brands fa-youtube text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
 
-
-</section>
-	<footer id="footer" class="padding-large bg-primary">
-		<div class="container-lg text-white">
-			<div class="row">
-				<div class="footer-menu col-md-4">
-					<div class="footer-intro">
-						<a href="#" class="logo"><img src="images/logo-light.png"></a>
-					</div>
-					<div class="footer-address mt-4">
-						<p>Just feel free to contact if you wanna collaborate with me, or simply have a conversation.
-						</p>
-						<div class="mail-address">
-							<a href="#" class="text-white fs-3 text-decoration-underline">contact@yourcompany.com</a>
-						</div>
-					</div>
-				</div>
-
-				<div class="footer-menu col-6 col-md-2">
-					<ul class="list-unstyled">
-						<li><a href="#" class="text-white">Home</a></li>
-						<li><a href="#" class="text-white">About</a></li>
-						<li><a href="#" class="text-white">Portfolio</a></li>
-						<li><a href="#" class="text-white">Services</a></li>
-						<li><a href="#" class="text-white">Contact</a></li>
-					</ul>
-				</div>
-
-				<div class="footer-menu col-6 col-md-2">
-					<ul class="list-unstyled">
-						<li><a href="#" class="text-white">Privacy Policy</a></li>
-						<li><a href="#" class="text-white">Our Team</a></li>
-						<li><a href="#" class="text-white">Pricing</a></li>
-						<li><a href="#" class="text-white">Terms and Conditions</a></li>
-					</ul>
-				</div>
-
-				<div class="footer-menu col-md-4">
-					<div class="subscribe">
-						<p>Subscribe to newsletter to get some updates related with branding, designs and more.</p>
-						<input class="rounded-2" type="text" name="email" placeholder="Write Your Email Address">
-						<button class="btn btn-dark">Subscribe</button>
-					</div>
-				</div>
-			</div>
-		</div>
-	</footer>
-
-	<div id="footer-bottom" class="py-3 bg-primary border-top">
-		<div class="container-lg text-white">
-			<div class="row align-items-center">
-				<div class="col-md-6">
-					<div class="social-links">
-						<ul class="justify-content-center justify-content-md-start m-0">
-							<li><a href="#"><i class="icon fs-5 icon-facebook"></i></a></li>
-							<li><a href="#"><i class="icon fs-5 icon-twitter"></i></a></li>
-							<li><a href="#"><i class="icon fs-5 icon-behance-square"></i></a></li>
-							<li><a href="#"><i class="icon fs-5 icon-youtube-play"></i></a></li>
-							<li><a href="#"><i class="icon fs-5 icon-pinterest-p"></i></a></li>
-						</ul>
-					</div>
-				</div>
-				<div class="col-md-6 text-center text-md-end">
-					<div class="copyright">
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+            <!-- Dolna belka -->
+            <div class="border-t border-gray-300 pt-8 flex flex-col md:flex-row justify-between items-center text-gray-400 text-[10px] uppercase tracking-widest">
+                <p>&copy; 2024 TWOJA NAZWA FIRMY. Wszystkie prawa zastrzeżone.</p>
+                <div class="flex space-x-6 mt-4 md:mt-0">
+                    <a href="#" class="hover:text-gray-600 transition-colors">Polityka prywatności</a>
+                    <a href="#" class="hover:text-gray-600 transition-colors">Regulamin</a>
+                </div>
+            </div>
+        </div>
+    </footer>
 
 	<script src="js/jquery-1.11.0.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
