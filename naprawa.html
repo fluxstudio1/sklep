@@ -3,7 +3,170 @@
 
 <head>
 	<title>Printlu.pl</title>
+ /* Kontener stopki */
+    .custom-footer {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        background-color: #DBCBB8; /* Twój kolor: Kawa z mlekiem */
+        color: #4a3f35;
+        padding: 3rem 1rem 1.5rem 1rem;
+        border-top: 1px solid rgba(0,0,0,0.05);
+    }
 
+    .footer-container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    /* Układ kolumn */
+    .footer-grid {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        gap: 3rem;
+    }
+
+    @media (min-width: 768px) {
+        .footer-grid {
+            flex-direction: row;
+            justify-content: space-between;
+        }
+    }
+
+    /* Sekcja Logo */
+    .footer-logo-section {
+        max-width: 300px;
+    }
+
+    .footer-logo-img {
+        max-height: 50px;
+        width: auto;
+        margin-bottom: 1.25rem;
+    }
+
+    .footer-description {
+        font-size: 0.8rem;
+        line-height: 1.6;
+        color: rgba(74, 63, 53, 0.8);
+        font-weight: 500;
+    }
+
+    /* Grupa Nawigacja + Kontakt */
+    .footer-info-group {
+        display: flex;
+        flex-direction: column;
+        gap: 3rem;
+    }
+
+    @media (min-width: 640px) {
+        .footer-info-group {
+            flex-direction: row;
+            gap: 5rem;
+        }
+    }
+
+    /* Nagłówki kolumn */
+    .footer-title {
+        font-size: 10px;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        color: rgba(74, 63, 53, 0.6);
+        margin-bottom: 1.25rem;
+    }
+
+    /* Linki menu */
+    .footer-nav-link {
+        display: block;
+        color: #4a3f35;
+        text-decoration: none;
+        font-size: 0.9rem;
+        font-weight: 600;
+        margin-bottom: 0.6rem;
+        transition: all 0.2s ease;
+    }
+
+    .footer-nav-link:hover {
+        transform: translateX(4px);
+        color: #ffffff;
+    }
+
+    /* Elementy kontaktu */
+    .footer-contact-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: #4a3f35;
+        text-decoration: none;
+        font-size: 0.9rem;
+        font-weight: 600;
+        margin-bottom: 0.6rem;
+    }
+
+    /* Ikony Social Media */
+    .footer-social-row {
+        display: flex;
+        gap: 10px;
+        margin-top: 1.25rem;
+    }
+
+    .footer-social-btn {
+        width: 42px;
+        height: 42px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(255, 255, 255, 0.4);
+        color: #4a3f35;
+        transition: all 0.3s ease;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .footer-social-btn:hover {
+        transform: translateY(-4px);
+        background: white;
+        box-shadow: 0 8px 15px rgba(0,0,0,0.05);
+    }
+
+    .fb:hover { color: #1877f2; }
+    .ig:hover { color: #e4405f; }
+    .yt:hover { color: #ff0000; }
+
+    /* Dolny pasek (Prawa autorskie) */
+    .footer-bottom {
+        margin-top: 3rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid rgba(0,0,0,0.08);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        font-size: 11px;
+        font-weight: 600;
+        color: rgba(74, 63, 53, 0.5);
+    }
+
+    @media (min-width: 640px) {
+        .footer-bottom {
+            flex-direction: row;
+            justify-content: space-between;
+        }
+    }
+
+    .footer-legal-links {
+        display: flex;
+        gap: 1.5rem;
+    }
+
+    .footer-legal-links a {
+        text-decoration: none;
+        color: inherit;
+        transition: color 0.2s;
+    }
+
+    .footer-legal-links a:hover {
+        color: #ffffff;
+    }
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -1059,4 +1222,5 @@
 
 
 </html>
+
 
