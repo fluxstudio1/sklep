@@ -141,6 +141,1163 @@
         </div>
     </div>
 </section>
+	<section id="about-me" class=" padding-large">
+		<div class="container-lg">
+			<div class="row">
+				<div class="col-md-4 mb-5 mb-lg-0">
+					<div class="info-box" data-aos="zoom-in-up" data-aos-delay="300">
+						<div class="icon"><iconify-icon icon="la:edit"></div>
+						<h3>Projektowanie 3D</h3>
+						<p>Profesjonalne modelowanie 3D na podstawie rysunków, zdjęć lub opisów. Od optymalizacji gotowych plików, po projektowanie skomplikowanych mechanizmów od zera.</p>
+					</div>
+				</div>
+				<div class="col-md-4 mb-5 mb-lg-0">
+					<div class="info-box" data-aos="zoom-in-up" data-aos-delay="600">
+						<div class="icon"><iconify-icon icon="la:gitter"></div>
+						<h3>Gadżety Personalizowane</h3>
+						<p>Tworzymy unikatowe breloki, biżuterię i gadżety firmowe w technologii FDM. Zapewniamy pełną realizację: od precyzyjnego druku, przez estetyczne pakowanie, aż po szybką wysyłkę.</p>
+					</div>
+				</div>
+				<div class="col-md-4 mb-5 mb-lg-0">
+					<div class="info-box" data-aos="zoom-in-up" data-aos-delay="900">
+						<div class="icon"><iconify-icon icon="la:jira"></div>
+						<h3>Logo Design</h3>
+						<p>Perferendis doloribus asperiores repellat quia voluptas aspernatur te natus accusan maiores
+							alias consequatur aut aut.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- SEKCJA GALERII PROJEKTÓW 3D - 3 KOLUMNY, PEŁNA CZERŃ Z ANIMACJĄ WEJŚCIA -->
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+
+    .gallery-section {
+        background-color: #ffffff;
+        padding: 100px 20px;
+        font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    .gallery-container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    /* Nagłówek - Pełna Czerń */
+    .gallery-header {
+        margin-bottom: 70px;
+        text-align: center;
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.8s ease-out;
+    }
+
+    /* Klasa aktywowana przez JS */
+    .gallery-header.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .gallery-title {
+        font-size: 34px;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+        margin-bottom: 15px;
+        color: #000000;
+        text-transform: none;
+    }
+
+    .gallery-subtitle {
+        font-size: 16px;
+        font-weight: 400;
+        opacity: 0.9;
+        max-width: 550px;
+        margin: 0 auto;
+        line-height: 1.6;
+        color: #000000;
+    }
+
+    /* Siatka galerii - 3 kolumny */
+    .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 35px;
+    }
+
+    /* Bazowy stan elementu przed animacją */
+    .gallery-item {
+        position: relative;
+        border-radius: 24px;
+        overflow: hidden;
+        aspect-ratio: 1 / 1;
+        background-color: #f8f8f8;
+        cursor: pointer;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+        transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.4s ease;
+        
+        /* Animacja wejścia */
+        opacity: 0;
+        transform: translateY(40px);
+        transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.4s ease, opacity 0.8s ease, transform-reveal 0.8s ease;
+    }
+
+    /* Klasa dodawana przez JS dla animacji scrolla */
+    .gallery-item.reveal {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .gallery-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    /* Overlay - "Pypek" */
+    .gallery-overlay {
+        position: absolute;
+        inset: 0;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 25px;
+        opacity: 0;
+        transition: opacity 0.4s ease;
+    }
+
+    .gallery-item:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    }
+
+    .gallery-item:hover .gallery-overlay {
+        opacity: 1;
+    }
+
+    .gallery-item:hover img {
+        transform: scale(1.1);
+    }
+
+    /* Biały boks informacyjny */
+    .project-info-box {
+        background: #ffffff;
+        padding: 20px;
+        border-radius: 18px;
+        transform: translateY(20px);
+        transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+        text-align: left;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+    }
+
+    .gallery-item:hover .project-info-box {
+        transform: translateY(0);
+    }
+
+    .project-name {
+        display: block;
+        color: #000000;
+        font-size: 17px;
+        font-weight: 700;
+        margin-bottom: 4px;
+    }
+
+    .project-client {
+        display: block;
+        color: #bc9c82;
+        font-size: 12px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.8px;
+    }
+
+    /* Responsywność */
+    @media (max-width: 1024px) {
+        .gallery-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width: 640px) {
+        .gallery-grid {
+            grid-template-columns: 1fr;
+        }
+        .gallery-title {
+            font-size: 26px;
+        }
+    }
+</style>
+
+<section class="gallery-section">
+    <div class="gallery-container">
+        
+        <div class="gallery-header" id="galleryHeader">
+            <h2 class="gallery-title">Portfolio Projektowe</h2>
+            <p class="gallery-subtitle">Kompletne zestawienie realizacji inżynieryjnych i projektowych stworzonych dla moich partnerów biznesowych.</p>
+        </div>
+
+        <div class="gallery-grid" id="galleryGrid">
+            
+            <!-- RZĄD 1 -->
+            <div class="gallery-item">
+                <img src="image/projekt1.jpg" alt="Projekt 3D">
+                <div class="gallery-overlay">
+                    <div class="project-info-box">
+                        <span class="project-name">Obudowa Przemysłowa</span>
+                        <span class="project-client">TechCorp Industry</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="image/projekt2.jpg" alt="Projekt 3D">
+                <div class="gallery-overlay">
+                    <div class="project-info-box">
+                        <span class="project-name">Części Mechaniczne</span>
+                        <span class="project-client">Automotive SA</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="image/projekt3.jpg" alt="Projekt 3D">
+                <div class="gallery-overlay">
+                    <div class="project-info-box">
+                        <span class="project-name">Model Architektoniczny</span>
+                        <span class="project-client">InwestProjekt</span>
+                    </div>
+                </div>
+            </div>
+    </div>
+</section>
+<!-- 
+    INSTRUKCJA:
+    Aby zmienić adres, na który kieruje przycisk, znajdź poniżej:
+    href="TWOJ_LINK_TUTAJ" 
+    i podmień tekst w cudzysłowie na właściwy adres (np. podstrona-galeria.html).
+-->
+
+<style>
+    /* Stylizacja kontenera (opcjonalna, służy do wyśrodkowania przycisku na stronie) */
+    .custom-btn-container {
+        display: flex;
+        justify-content: center;
+        padding: 40px 0;
+        font-family: 'Plus Jakarta Sans', sans-serif; /* Dopasowane do reszty strony */
+    }
+
+    /* Główny styl przycisku */
+    .btn-see-more-standalone {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        background-color: #000000; /* Głęboka czerń */
+        color: #ffffff;
+        padding: 16px 45px;
+        border-radius: 50px;
+        font-size: 15px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1.2px;
+        text-decoration: none; /* Usuwa podkreślenie linku */
+        transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        border: 2px solid #000000;
+    }
+
+    /* Efekt po najechaniu myszką */
+    .btn-see-more-standalone:hover {
+        background-color: #bc9c82; /* Twój kolor kawowy / brązowy */
+        border-color: #bc9c82;
+        transform: translateY(-5px);
+        box-shadow: 0 15px 35px rgba(188, 156, 130, 0.35);
+        color: #ffffff;
+    }
+
+    /* Styl strzałki SVG */
+    .btn-see-more-standalone svg {
+        transition: transform 0.3s ease;
+    }
+
+    .btn-see-more-standalone:hover svg {
+        transform: translateX(6px); /* Przesunięcie strzałki w prawo */
+    }
+
+    /* RWD: Mniejszy przycisk na telefonach */
+    @media (max-width: 480px) {
+        .btn-see-more-standalone {
+            padding: 14px 35px;
+            font-size: 13px;
+        }
+    }
+</style>
+
+<div class="custom-btn-container">
+    <!-- TUTAJ WPISZ SWÓJ LINK -->
+    <a href="https://fluxstudio1.github.io/sklep/Galeria.html" class="btn-see-more-standalone">
+        Zobacz więcej
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+        </svg>
+    </a>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('reveal');
+                    // Jeśli to nagłówek
+                    if(entry.target.id === 'galleryHeader') {
+                        entry.target.classList.add('is-visible');
+                    }
+                }
+            });
+        }, observerOptions);
+
+        // Obserwuj nagłówek
+        const header = document.getElementById('galleryHeader');
+        observer.observe(header);
+
+        // Obserwuj każdy element galerii z opóźnieniem (kaskada)
+        const items = document.querySelectorAll('.gallery-item');
+        items.forEach((item, index) => {
+            // Dodajemy opóźnienie w CSS dla efektu kolejności
+            item.style.transitionDelay = `${(index % 3) * 0.15}s`;
+            observer.observe(item);
+        });
+    });
+</script>
+
+<style>
+    .printo-reviews-wrapper {
+        width: 100%;
+        padding: 100px 0;
+        background-color: transparent;
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        overflow: hidden; /* Ukrywamy wystające opinie */
+        position: relative;
+    }
+
+    .printo-reviews-title {
+        text-align: center;
+        font-size: 32px;
+        font-weight: 800;
+        color: #1a1a1a;
+        margin-bottom: 50px;
+        letter-spacing: -1px;
+    }
+
+    /* Kontener dla slidera */
+    .printo-slider-container {
+        display: flex;
+        width: max-content; /* Pozwala zawartości rozciągnąć się w linii */
+        animation: scroll-left 40s linear infinite; /* Płynny, stały ruch co 40s (wolno) */
+    }
+
+    /* Zatrzymanie po najechaniu myszką */
+    .printo-slider-container:hover {
+        animation-play-state: paused;
+    }
+
+    .printo-review-card {
+        background: #ffffff;
+        width: 350px;
+        margin: 0 15px;
+        padding: 35px;
+        border-radius: 30px;
+        box-shadow: 0 15px 40px rgba(0,0,0,0.03);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        transition: transform 0.3s ease;
+        border: 1px solid #f0f0f0;
+    }
+
+    .printo-review-card:hover {
+        transform: translateY(-10px);
+        border-color: #1a1a1a;
+    }
+
+    .printo-stars {
+        color: #1a1a1a;
+        font-size: 18px;
+        margin-bottom: 15px;
+    }
+
+    .printo-review-text {
+        font-size: 15px;
+        color: #444;
+        line-height: 1.6;
+        font-weight: 500;
+        margin-bottom: 25px;
+        flex-grow: 1;
+    }
+
+    .printo-reviewer-info {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .printo-reviewer-avatar {
+        width: 45px;
+        height: 45px;
+        background: #f6f1ea;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 800;
+        color: #1a1a1a;
+        font-size: 14px;
+        text-transform: uppercase;
+    }
+
+    .printo-reviewer-details {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .printo-reviewer-name {
+        font-size: 14px;
+        font-weight: 800;
+        color: #1a1a1a;
+    }
+
+    .printo-reviewer-tag {
+        font-size: 11px;
+        color: #aaa;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    /* Kluczowa animacja nieskończonego przewijania */
+    @keyframes scroll-left {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); } /* Przesuwamy o połowę szerokości kontenera */
+    }
+
+    /* Dodajemy gradienty na bokach dla efektu "wyłaniania się" */
+    .printo-reviews-wrapper::before,
+    .printo-reviews-wrapper::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        width: 150px;
+        height: 100%;
+        z-index: 2;
+        pointer-events: none;
+    }
+
+    .printo-reviews-wrapper::before {
+        left: 0;
+        background: linear-gradient(to right, #f6f1ea 0%, rgba(246,241,234,0) 100%);
+    }
+
+    .printo-reviews-wrapper::after {
+        right: 0;
+        background: linear-gradient(to left, #f6f1ea 0%, rgba(246,241,234,0) 100%);
+    }
+</style>
+
+<div class="printo-reviews-wrapper">
+    <h2 class="printo-reviews-title">Opinie naszych klientów</h2>
+
+    <div class="printo-slider-container" id="reviewSlider">
+        <!-- Grupa 1 (Oryginalna) -->
+        <div class="printo-review-card">
+            <div class="printo-stars">★★★★★</div>
+            <p class="printo-review-text">"Niesamowita jakość wydruków 3D. Każdy detal został odwzorowany idealnie, a kontakt z obsługą był błyskawiczny."</p>
+            <div class="printo-reviewer-info">
+                <div class="printo-reviewer-avatar">MK</div>
+                <div class="printo-reviewer-details">
+                    <span class="printo-reviewer-name">Michał Kowalski</span>
+                    <span class="printo-reviewer-tag">Projektant Wnętrz</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="printo-review-card">
+            <div class="printo-stars">★★★★★</div>
+            <p class="printo-review-text">"Zamówiłem personalizowany gadżet na prezent. Czas realizacji przeszedł moje oczekiwania. Polecam każdemu!"</p>
+            <div class="printo-reviewer-info">
+                <div class="printo-reviewer-avatar">AN</div>
+                <div class="printo-reviewer-details">
+                    <span class="printo-reviewer-name">Anna Nowak</span>
+                    <span class="printo-reviewer-tag">Klient Indywidualny</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="printo-review-card">
+            <div class="printo-stars">★★★★★</div>
+            <p class="printo-review-text">"Profesjonalne podejście do druku technicznego. Elementy pasują co do milimetra. Na pewno wrócę z kolejnym projektem."</p>
+            <div class="printo-reviewer-info">
+                <div class="printo-reviewer-avatar">PT</div>
+                <div class="printo-reviewer-details">
+                    <span class="printo-reviewer-name">Piotr Tatarkiewicz</span>
+                    <span class="printo-reviewer-tag">Inżynier</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="printo-review-card">
+            <div class="printo-stars">★★★★★</div>
+            <p class="printo-review-text">"Najlepsza obsługa klienta z jaką miałam do czynienia w branży 3D. Doradzili w doborze materiału i pomogli poprawić model."</p>
+            <div class="printo-reviewer-info">
+                <div class="printo-reviewer-avatar">KW</div>
+                <div class="printo-reviewer-details">
+                    <span class="printo-reviewer-name">Katarzyna Wiśniewska</span>
+                    <span class="printo-reviewer-tag">Architekt</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="printo-review-card">
+            <div class="printo-stars">★★★★★</div>
+            <p class="printo-review-text">"Szybko, tanio i przede wszystkim solidnie. Modele 3D są bardzo wytrzymałe i mają gładkie wykończenie."</p>
+            <div class="printo-reviewer-info">
+                <div class="printo-reviewer-avatar">RZ</div>
+                <div class="printo-reviewer-details">
+                    <span class="printo-reviewer-name">Robert Zieliński</span>
+                    <span class="printo-reviewer-tag">Startup Founder</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="printo-review-card">
+            <div class="printo-stars">★★★★★</div>
+            <p class="printo-review-text">"Korzystamy z usług Printo regularnie przy prototypowaniu. Zawsze na czas i w najwyższej jakości."</p>
+            <div class="printo-reviewer-info">
+                <div class="printo-reviewer-avatar">JS</div>
+                <div class="printo-reviewer-details">
+                    <span class="printo-reviewer-name">Janusz Sadowski</span>
+                    <span class="printo-reviewer-tag">Dział R&D</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Grupa 2 (Kopia dla efektu nieskończoności) -->
+        <!-- Ten sam zestaw kart musi być powtórzony, aby animacja była płynna -->
+    </div>
+</div>
+
+<script>
+    // Automatyczne klonowanie kart, aby zapewnić efekt "nieskończoności"
+    const slider = document.getElementById('reviewSlider');
+    const cards = slider.innerHTML;
+    slider.innerHTML += cards; // Powielamy zawartość
+</script>
+<section>
+  <form method="POST" class="kf-form" action="https://kwesforms.com/api/f/ENj4HTM316zUX667FG2L">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&display=swap" rel="stylesheet">
+
+<style>
+    .printo-contact-section {
+        width: 100%;
+        padding: 100px 0;
+        background-color: #ffffff;
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .printo-contact-header {
+        text-align: center;
+        margin-bottom: 60px;
+    }
+
+    .printo-contact-header h2 {
+        font-size: 42px;
+        color: #1a1a1a;
+        margin: 0;
+        font-weight: 800;
+        letter-spacing: -1.5px;
+    }
+
+    .printo-contact-header p {
+        color: #777;
+        font-size: 16px;
+        margin-top: 15px;
+        max-width: 600px;
+        line-height: 1.6;
+    }
+
+    /* Panel z cieniutką rameczką zamiast mocnego cienia */
+    .printo-form-container {
+        background: #ffffff;
+        padding: 50px;
+        border-radius: 35px;
+        /* Cieniutka, elegancka ramka w kolorze tekstów */
+        border: 1px solid rgba(26, 26, 26, 0.15); 
+        width: 95%;
+        max-width: 1200px;
+        box-sizing: border-box;
+        transition: all 0.4s ease;
+    }
+
+    /* Delikatny efekt po najechaniu na cały panel */
+    .printo-form-container:hover {
+        border-color: rgba(26, 26, 26, 0.4);
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.02);
+    }
+
+    .printo-form-row {
+        display: flex;
+        gap: 25px;
+        flex-wrap: wrap;
+        align-items: flex-end;
+    }
+
+    .printo-field-group {
+        flex: 1;
+        min-width: 260px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .printo-field-group.msg-width {
+        flex: 1.8;
+    }
+
+    .printo-field-group label {
+        font-size: 11px;
+        font-weight: 800;
+        color: #1a1a1a; /* Kolor labeli spójny z ramką */
+        margin-bottom: 12px;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        padding-left: 5px;
+        opacity: 0.6;
+    }
+
+    .printo-input, 
+    .printo-textarea {
+        padding: 18px 25px;
+        /* Pola również mają subtelną ramkę */
+        border: 1px solid #eeeeee;
+        border-radius: 18px;
+        font-size: 15px;
+        outline: none;
+        transition: all 0.3s ease;
+        background-color: #ffffff;
+        width: 100%;
+        box-sizing: border-box;
+        height: 62px;
+        color: #1a1a1a;
+        font-family: inherit;
+    }
+
+    .printo-textarea {
+        resize: none;
+        line-height: 24px;
+        padding-top: 18px;
+    }
+
+    .printo-input:focus, 
+    .printo-textarea:focus {
+        border-color: #1a1a1a;
+        background-color: #ffffff;
+    }
+
+    .printo-submit-btn {
+        background: #1a1a1a;
+        color: #ffffff;
+        border: none;
+        padding: 0 45px;
+        height: 62px;
+        border-radius: 18px;
+        font-size: 15px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        white-space: nowrap;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .printo-submit-btn:hover {
+        background: #000000;
+        transform: scale(1.02);
+    }
+
+    /* Responsywność */
+    @media (max-width: 1024px) {
+        .printo-field-group { min-width: 45%; }
+        .printo-field-group.msg-width { flex: 1; min-width: 100%; }
+    }
+
+    @media (max-width: 768px) {
+        .printo-form-row { flex-direction: column; align-items: stretch; }
+        .printo-field-group { min-width: 100%; }
+        .printo-submit-btn { width: 100%; margin-top: 10px; }
+        .printo-contact-header h2 { font-size: 32px; }
+        .printo-form-container { padding: 30px 20px; }
+    }
+</style>
+
+<div class="printo-contact-section">
+    <div class="printo-contact-header">
+        <h2>Skontaktuj się z nami</h2>
+        <p>Potrzebujesz szybkiej wyceny? Wypełnij formularz, a nasz zespół skontaktuje się z Tobą w ciągu kilku godzin.</p>
+    </div>
+
+    <div class="printo-form-container">
+        <form action="#" method="POST">
+            <div class="printo-form-row">
+                
+                <div class="printo-field-group">
+                    <label for="p-name">Imię i nazwisko</label>
+                    <input type="text" id="p-name" name="name" class="printo-input" placeholder="Jan Kowalski" required>
+                </div>
+
+                <div class="printo-field-group">
+                    <label for="p-email">Adres E-mail</label>
+                    <input type="email" id="p-email" name="email" class="printo-input" placeholder="twój adres email" required>
+                </div>
+
+                <div class="printo-field-group msg-width">
+                    <label for="p-msg">Wiadomość</label>
+                    <textarea id="p-msg" name="message" class="printo-textarea" placeholder="Opisz krótko swój projekt..." required></textarea>
+                </div>
+
+                <button type="submit" class="printo-submit-btn">
+                    Wyślij
+                </button>
+
+            </div>
+        </form>
+    </div>
+</div>
+<section>
+	<section id="post-grid" class="padding-large">
+		<div class="container-lg">
+			<div class="row">
+				<div class="section-header align-center mb-5">
+					<h2 class="display-5 m-0">Latest News</h2>
+					<span class="text-black-50">Accusan maiores alias conseaut equatur aut perferendi.</span>
+				</div>
+			</div>
+		</div>
+		<div class="container-lg">
+			<div class="row">
+				<div class="col-md-4" data-aos="zoom-in-up" data-aos-delay="300">
+					<figure class="post-item">
+						<a href="#" class="post-link"><img src="images/post-thumb-1.jpg" alt="post"></a>
+						<figcaption class="py-4">
+							<div class="meta-wrap text-white">
+								<span class="meta-category">Graphic Design 2021</span> /
+								<span class="meta-date">July 1, 2021</span>
+							</div>
+							<h3>
+								<a href="single-post.html" class="text-white">Graphic Designing Useful Tips & Best
+									Practices</a>
+							</h3>
+						</figcaption>
+					</figure>
+				</div>
+
+				<div class="col-md-4" data-aos="zoom-in-up" data-aos-delay="600">
+					<figure class="post-item">
+						<a href="#" class="post-link"><img src="images/post-thumb-2.jpg" alt="post"></a>
+						<figcaption class="py-4">
+							<div class="meta-wrap text-white">
+								<span class="meta-category">Graphic Design 2021</span> /
+								<span class="meta-date">July 1, 2021</span>
+							</div>
+							<h3>
+								<a href="single-post.html" class="text-white">Basic typography rules for ui
+									designing</a>
+							</h3>
+						</figcaption>
+					</figure>
+				</div>
+
+				<div class="col-md-4" data-aos="zoom-in-up" data-aos-delay="900">
+					<figure class="post-item">
+						<a href="#" class="post-link"><img src="images/post-thumb-3.jpg" alt="post"></a>
+						<figcaption class="py-4">
+							<div class="meta-wrap text-white">
+								<span class="meta-category">Graphic Design 2021</span> /
+								<span class="meta-date">July 1, 2021</span>
+							</div>
+							<h3>
+								<a href="single-post.html" class="text-white">Top 10 graphic designs review in 2021</a>
+							</h3>
+						</figcaption>
+					</figure>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Plus+Jakarta+Sans:wght@700&display=swap" rel="stylesheet">
+
+<style>
+    .printo-counters-wrapper {
+        width: 100%;
+        padding: 80px 0;
+        background: transparent;
+        font-family: 'Bebas Neue', sans-serif;
+        display: flex;
+        justify-content: center;
+        overflow: hidden;
+    }
+
+    .printo-counters-grid {
+        display: flex;
+        justify-content: center;
+        gap: 120px;
+        width: 95%;
+        max-width: 1200px;
+        flex-wrap: wrap;
+    }
+
+    .printo-counter-item {
+        text-align: center;
+        flex: 1;
+        min-width: 250px;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 1s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .printo-counter-item.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .printo-number-box {
+        font-size: 110px;
+        font-weight: 400;
+        color: #1a1a1a;
+        margin-bottom: 0px;
+        display: flex;
+        justify-content: center;
+        align-items: center; /* Centrowanie pionowe zawartości (liczba i plus) */
+        line-height: 1;
+        letter-spacing: 1px;
+    }
+
+    .printo-plus {
+        color: #1a1a1a; /* W pełni czarny */
+        margin-left: 8px;
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        font-size: 55px;
+        font-weight: 700;
+        display: inline-block;
+        line-height: 1;
+        /* Korekta optyczna, aby plus był idealnie w środku wysokości Bebas Neue */
+        transform: translateY(-4px); 
+    }
+
+    .printo-label {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        font-size: 14px;
+        font-weight: 700;
+        color: #b0b0b0;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        margin-top: 10px;
+    }
+
+    /* RWD */
+    @media (max-width: 1024px) {
+        .printo-counters-grid { gap: 60px; }
+        .printo-number-box { font-size: 85px; }
+        .printo-plus { font-size: 40px; transform: translateY(-2px); }
+    }
+
+    @media (max-width: 768px) {
+        .printo-counters-grid { gap: 40px; }
+        .printo-number-box { font-size: 70px; }
+        .printo-plus { font-size: 35px; transform: translateY(-2px); }
+        .printo-label { font-size: 12px; }
+    }
+</style>
+
+<div class="printo-counters-wrapper">
+    <div class="printo-counters-grid" id="countersGrid">
+        
+        <!-- Licznik 1 -->
+        <div class="printo-counter-item">
+            <div class="printo-number-box">
+                <span class="pure-number" data-target="2">0</span>
+                <span class="printo-plus">+</span>
+            </div>
+            <div class="printo-label">Lata Doświadczenia</div>
+        </div>
+
+        <!-- Licznik 2 -->
+        <div class="printo-counter-item">
+            <div class="printo-number-box">
+                <span class="pure-number" data-target="100">0</span>
+                <span class="printo-plus">+</span>
+            </div>
+            <div class="printo-label">Zadowolonych Klientów</div>
+        </div>
+
+        <!-- Licznik 3 -->
+        <div class="printo-counter-item">
+            <div class="printo-number-box">
+                <span class="pure-number" data-target="300">0</span>
+                <span class="printo-plus">+</span>
+            </div>
+            <div class="printo-label">Projektów 3D</div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    function easeOutQuint(x) {
+        return 1 - Math.pow(1 - x, 5);
+    }
+
+    const animateValue = (obj, start, end, duration) => {
+        let startTimestamp = null;
+        const step = (timestamp) => {
+            if (!startTimestamp) startTimestamp = timestamp;
+            const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+            const easedProgress = easeOutQuint(progress);
+            const currentValue = Math.floor(easedProgress * (end - start) + start);
+            obj.innerHTML = currentValue;
+            
+            if (progress < 1) {
+                window.requestAnimationFrame(step);
+            } else {
+                obj.innerHTML = end;
+            }
+        };
+        window.requestAnimationFrame(step);
+    };
+
+    const startAnimation = () => {
+        const items = document.querySelectorAll('.printo-counter-item');
+        items.forEach((item, index) => {
+            setTimeout(() => {
+                item.classList.add('visible');
+                const numSpan = item.querySelector('.pure-number');
+                const target = parseInt(numSpan.getAttribute('data-target'));
+                animateValue(numSpan, 0, target, 3000);
+            }, index * 200);
+        });
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                startAnimation();
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.4 });
+
+    const targetSection = document.getElementById('countersGrid');
+    if (targetSection) {
+        observer.observe(targetSection);
+    }
+</script>
+<footer class="custom-footer">
+    <div class="footer-container">
+        <div class="footer-grid">
+            
+            <!-- KOLUMNA 1: LOGO I OPIS -->
+            <div class="footer-logo-section">
+                <!-- MIEJSCE NA TWOJE LOGO -->
+                <img src="images/printlu (1).png" 
+              
+					<p class="footer-description">
+                   
+                </p>
+            </div>
+
+            <!-- GRUPA KONTAKT + MENU -->
+            <div class="footer-info-group">
+                
+                <!-- KOLUMNA 2: MENU -->
+                <div>
+                    <h3 class="footer-title">Menu</h3>
+                    <nav>
+                        <a href="https://fluxstudio1.github.io/sklep/" class="footer-nav-link">Strona Główna</a>
+                        <a href="https://fluxstudio1.github.io/sklep/Kontakt.html" class="footer-nav-link">Kontakt</a>
+                        <a href="https://fluxstudio1.github.io/sklep/Galeria.html" class="footer-nav-link">Galeria</a>
+                    </nav>
+                </div>
+
+                <!-- KOLUMNA 3: KONTAKT I SOCIALS -->
+                <div>
+                    <h3 class="footer-title">Kontakt</h3>
+                    <div class="footer-contact-list">
+                        <a href="mailto:kontakt@twojadomena.pl" class="footer-contact-item">
+                            <i data-lucide="mail" style="width: 16px; height: 16px; opacity: 0.7;"></i>
+                            <span>kontakt@twojadomena.pl</span>
+                        </a>
+                        <a href="tel:+48799288320" class="footer-contact-item">
+                            <i data-lucide="phone" style="width: 16px; height: 16px; opacity: 0.7;"></i>
+                            <span>+48 799 288 320</span>
+                        </a>
+                    </div>
+
+                    <div class="footer-social-row">
+                        <a href="#" class="footer-social-btn fb" title="Facebook">
+                            <i data-lucide="facebook" style="width: 18px; height: 18px;"></i>
+                        </a>
+                        <a href="#" class="footer-social-btn ig" title="Instagram">
+                            <i data-lucide="instagram" style="width: 18px; height: 18px;"></i>
+                        </a>
+                        <a href="#" class="footer-social-btn yt" title="YouTube">
+                            <i data-lucide="youtube" style="width: 18px; height: 18px;"></i>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- DOLNY PASEK -->
+        <div class="footer-bottom">
+            <div>&copy; 2025 Printlu. WSZYSTKIE PRAWA ZASTRZEŻONE.</div>
+            <div class="footer-legal-links">
+                <a href="#">POLITYKA PRYWATNOŚCI</a>
+                <a href="#">REGULAMIN</a>
+            </div>
+        </div>
+    </div>
+</footer>
+				<div class="col-md-6 text-center text-md-end">
+					<div class="copyright">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="js/jquery-1.11.0.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+		crossorigin="anonymous"></script>
+	<script src="assets/vendor/chocolat/js/chocolat.js"></script>
+	<script src="js/plugins.js"></script>
+	<script src="js/script.js"></script>
+
+<script src="https://kwesforms.com/v2/kf-script.js" defer></script>
+	<!-- ELEMENT: PRZYCISK POWROTU DO GÓRY (SCROLL TO TOP) -->
+<style>
+    /* Stylizacja przycisku */
+    .scroll-top-btn {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        width: 50px;
+        height: 50px;
+        background-color: #000000; /* Pełna czerń pasująca do Twojej galerii */
+        color: #ffffff;
+        border-radius: 50%; /* Idealne kółeczko */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        z-index: 1000;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(20px);
+        transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        border: none;
+        outline: none;
+    }
+
+    /* Wygląd strzałki (używamy czystego CSS dla lekkości) */
+    .scroll-top-btn::after {
+        content: '';
+        width: 10px;
+        height: 10px;
+        border-top: 2px solid #ffffff;
+        border-right: 2px solid #ffffff;
+        transform: rotate(-45deg);
+        margin-top: 4px;
+        transition: transform 0.3s ease;
+    }
+
+    /* Klasa pokazująca przycisk (dodawana przez JS) */
+    .scroll-top-btn.is-active {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    /* Efekt najechania myszką */
+    .scroll-top-btn:hover {
+        background-color: #bc9c82; /* Twój kolor kawowy przy najechaniu */
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px rgba(188, 156, 130, 0.3);
+    }
+
+    .scroll-top-btn:hover::after {
+        transform: rotate(-45deg) translate(2px, -2px);
+    }
+
+    /* Ukrycie na bardzo małych ekranach (opcjonalnie) */
+    @media (max-width: 480px) {
+        .scroll-top-btn {
+            bottom: 20px;
+            right: 20px;
+            width: 45px;
+            height: 45px;
+        }
+    }
+</style>
+
+<!-- Przycisk w HTML -->
+<button class="scroll-top-btn" id="scrollTopBtn" aria-label="Powrót do góry"></button>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const scrollTopBtn = document.getElementById('scrollTopBtn');
+
+        // Funkcja sprawdzająca pozycję scrolla
+        window.addEventListener('scroll', () => {
+            // Przycisk pojawia się po przewinięciu 400px w dół
+            if (window.pageYOffset > 400) {
+                scrollTopBtn.classList.add('is-active');
+            } else {
+                scrollTopBtn.classList.remove('is-active');
+            }
+        });
+
+        // Obsługa kliknięcia - płynny powrót do góry
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth' // Płynna animacja przewijania
+            });
+        });
+    });
+</script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>
+    lucide.createIcons();
+</script>
 </body>
 
 
