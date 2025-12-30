@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Printlu.pl</title>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap');
+
+    .hero-section {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        width: 100%;
+        background-color: #ffffff;
+        padding: 40px 0;
+        overflow: hidden;
+    }
+
+    .hero-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+
+    /* Logo - ścieżka do folderu images */
+    .hero-logo-container {
+        margin-bottom: 50px;
+        animation: fadeIn 0.8s ease;
+    }
+
+    .hero-logo-img {
+        height: 50px; /* Zmniejszone logo */
+        width: auto;
+    }
+
+    .hero-flex {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 40px;
+    }
+
+    .hero-content {
+        flex: 1;
+        animation: slideUp 0.8s ease forwards;
+    }
+
+    .hero-title {
+        font-size: 3rem;
+        font-weight: 800;
+        color: #1a1a1a;
+        line-height: 1.2;
+        margin-bottom: 20px;
+    }
+
+    .hero-title span {
+        color: #DBCBB8;
+    }
+
+    .hero-desc {
+        font-size: 1.1rem;
+        color: #555;
+        margin-bottom: 30px;
+        max-width: 450px;
+    }
+
+    .hero-btn {
+        display: inline-block;
+        padding: 14px 28px;
+        background-color: #4a3f35;
+        color: white;
+        text-decoration: none;
+        border-radius: 8px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+    }
+
+    .hero-btn:hover {
+        background-color: #DBCBB8;
+        color: #4a3f35;
+        transform: translateY(-2px);
+    }
+
+    .hero-visual {
+        flex: 1;
+        display: flex;
+        justify-content: flex-end;
+        animation: fadeIn 1.2s ease forwards;
+    }
+
+    .hero-visual img {
+        max-width: 100%;
+        border-radius: 20px;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+    }
+
+    /* Proste animacje */
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+
+    @keyframes slideUp {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 768px) {
+        .hero-flex {
+            flex-direction: column;
+            text-align: center;
+        }
+        .hero-desc {
+            margin: 0 auto 30px auto;
+        }
+        .hero-visual {
+            justify-content: center;
+        }
+        .hero-logo-container {
+            text-align: center;
+        }
+    }
+</style>
+
+<section class="hero-section">
+    <div class="hero-container">
+        <!-- SEKCJA LOGO - Tutaj wpisz nazwę swojego pliku w folderze images -->
+        <div class="hero-logo-container">
+            <img src="images/logo.png" alt="Printlu Logo" class="hero-logo-img" onerror="this.src='https://via.placeholder.com/150x50?text=Twoje+Logo'">
+        </div>
+
+        <div class="hero-flex">
+            <div class="hero-content">
+                <h1 class="hero-title">Wydruki z <span>charakterem.</span></h1>
+                <p class="hero-desc">Tworzymy projekty, które zostają w pamięci. Twoja wizja, nasza precyzja wykonania.</p>
+                <a href="#produkty" class="hero-btn">Sprawdź produkty</a>
+            </div>
+
+            <div class="hero-visual">
+                <!-- Obrazek po prawej - mniejszy i stylowy -->
+                <img src="https://via.placeholder.com/600x450/fdfbfb/4a3f35?text=Nasze+Projekty" alt="Przykładowe produkty">
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+
+
+</html>
